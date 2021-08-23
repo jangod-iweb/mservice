@@ -108,7 +108,7 @@ module.exports = {
     }
   },
   "filters": {
-    "mapp-plugin/mapp-plugin-demo/web/*": "isWeb"
+    "mapp-plugin/mapp-plugin-demo/web/**": "isWeb"
   },
   helpers: {
     firstToUpper(str) {
