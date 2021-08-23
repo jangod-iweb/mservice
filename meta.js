@@ -131,5 +131,5 @@ module.exports = {
         });
     }
   },
-  "completeMessage": "请按以下步骤启动，耐心等待:\n\n 1.  {{^inPlace}} cd {{destDirName}}\n 2. cnpm config set registry http://39.108.236.82:7001\n 3. cnpm i\n {{/inPlace}}4.  npm run dev"
+  "completeMessage": "代码生成成功"
 }
