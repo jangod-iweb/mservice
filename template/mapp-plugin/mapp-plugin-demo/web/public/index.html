@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="referrer" content="no-referrer">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>项目名称</title>
+  <script type="text/javascript">
+      (function(){window.__iweb_context_path="";window.__iweb_preview="0";var pathname=window.location.pathname;var arrPathname=pathname.split("/");if(arrPathname.length>3&&(arrPathname[1]=="t"||arrPathname[1]=="tp"||arrPathname[1]=="p")){window.__iweb_context_path="/"+arrPathname[1]+"/"+arrPathname[2]+"/";if(arrPathname[1]==="tp"){window.__iweb_preview="1"}}else{window.__iweb_context_path="<%=webpackConfig.output.publicPath %>"}})();
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/javascript">
+      (function(){
+          eval(function(p,a,c,k,e,r){e=function(c){return c.toString(36)};if('0'.replace(0,e)==0){while(c--)r[e(c)]=k[c];k=[function(e){return r[e]||e}];e=function(){return'[1-9a-e]'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('window.dynamicLoading={8:9(4,5){6 1=7.a(\'1\')[0];6 2=7.b(\'2\');2.href=5+4;2.rel=\'stylesheet\';2.c=\'d/8\';1.e(2)},js:9(4,5){6 1=7.a(\'1\')[0];6 3=7.b(\'3\');3.4=5+4;3.c=\'d/javascript\';3.crossorigin="anonymous";1.e(3)}}',[],15,'|head|link|script|src|path|var|document|css|function|getElementsByTagName|createElement|type|text|appendChild'.split('|'),0,{}))
+          <% for (var css in htmlWebpackPlugin.files.css) { %>dynamicLoading.css("<%=htmlWebpackPlugin.files.css[css] %>","<%=webpackConfig.output.publicPath %>"?"":window.__iweb_context_path);<% } %><% for (var js in htmlWebpackPlugin.files.js) { %>dynamicLoading.js("<%=htmlWebpackPlugin.files.js[js] %>","<%=webpackConfig.output.publicPath %>"?"":window.__iweb_context_path);<% } %>
+      })();
+  </script>
+</body>
+</html>

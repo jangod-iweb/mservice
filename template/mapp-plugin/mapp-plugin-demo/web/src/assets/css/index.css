@@ -1,0 +1,511 @@
+/**
+ * 初始化默认样式
+ */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+/**
+ * 滚动条样式
+ */
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: transparent;
+}
+::-webkit-scrollbar-track {
+    border-radius: 6px;
+    background: transparent;
+}
+:hover ::-webkit-scrollbar-thumb{
+    background: #c2c2c2;
+}
+:hover ::-webkit-scrollbar-track{
+    background: rgba(250,250,250,.9);
+}
+/**
+ * 清楚浮动层
+ */
+.clearboth,.clearfix {
+    clear: both !important;
+}
+/**
+ * margin 快捷样式
+ * 说明：
+ *     1为10px，l为1的一半即为5px，进行组合,最大为3即30px，分别包括0,l,1,1l,2,2l,3
+ *  m为四个方向，mt，mb，ml，mr分别表示上下左右
+ *  mx:表示左右方向，my：表示上下方向
+ */
+.m-0 {
+    margin: 0 !important;
+}
+.m-l {
+    margin: 5px !important;
+}
+.m-1 {
+    margin: 10px !important;
+}
+.m-1l {
+    margin: 15px !important;
+}
+.m-2 {
+    margin: 20px !important;
+}
+.m-2l {
+    margin: 25px !important;
+}
+.m-3 {
+    margin: 30px !important;
+}
+.mt-0 {
+    margin-top: 0 !important;
+}
+.mt-l {
+    margin-top: 5px !important;
+}
+.mt-1 {
+    margin-top: 10px !important;
+}
+.mt-1l {
+    margin-top: 15px !important;
+}
+.mt-2 {
+    margin-top: 20px !important;
+}
+.mt-2l {
+    margin-top: 25px !important;
+}
+.mt-3 {
+    margin-top: 30px !important;
+}
+.ml-0 {
+    margin-left: 0 !important;
+}
+.ml-l {
+    margin-left: 5px !important;
+}
+.ml-1 {
+    margin-left: 10px !important;
+}
+.ml-1l {
+    margin-left: 15px !important;
+}
+.ml-2 {
+    margin-left: 20px !important;
+}
+.ml-3 {
+    margin-left: 30px !important;
+}
+.mr-0 {
+    margin-right: 0 !important;
+}
+.mr-l {
+    margin-right: 5px !important;
+}
+.mr-1 {
+    margin-right: 10px !important;
+}
+.mr-1l {
+    margin-right: 15px !important;
+}
+.mr-2 {
+    margin-right: 20px !important;
+}
+.mr-3 {
+    margin-right: 30px !important;
+}
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+.mb-l {
+    margin-bottom: 5px !important;
+}
+.mb-1 {
+    margin-bottom: 10px !important;
+}
+.mb-1l {
+    margin-bottom: 15px !important;
+}
+.mb-2 {
+    margin-bottom: 20px !important;
+}
+.mb-2l {
+    margin-bottom: 25px !important;
+}
+.mb-3 {
+    margin-bottom: 30px !important;
+}
+.my-0 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+.mx-0 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.my-l {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+.my-1 {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+.my-1l {
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+}
+.my-2 {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+}
+/**
+ * padding 快捷样式
+ * 说明：
+ *     1为10px，l为1的一半即为5px，进行组合,最大为3即30px，分别包括0,l,1,1l,2,2l,3
+ *  p为四个方向，pt，pb，pl，pr分别表示上下左右
+ *  px:表示左右方向，py：表示上下方向
+ */
+.p-0 {
+    padding: 0 !important;
+}
+.p-1p-l {
+    padding: 5px !important;
+}
+.p-1 {
+    padding: 10px !important;
+}
+.p-1l {
+    padding: 15px !important;
+}
+.p-2 {
+    padding: 20px !important;
+}
+.p-2l {
+    padding: 25px !important;
+}
+.p-3 {
+    padding: 30px !important;
+}
+.px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.px-1 {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+.px-l {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+.px-1l {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+.px-2 {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+.px-2l {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+}
+.px-3 {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+.pt-0 {
+    padding-top: 0 !important;
+}
+.pt-l {
+    padding-top: 5px !important;
+}
+.pt-1 {
+    padding-top: 10px !important;
+}
+.pt-1l {
+    padding-top: 15px !important;
+}
+.pt-2 {
+    padding-top: 20px !important;
+}
+.py-0 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+.py-l {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+.py-1 {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+.py-1l {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+.py-2 {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+.py-2l {
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+}
+.py-3 {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+}
+.pl-0 {
+    padding-left: 0 !important;
+}
+.pl-l {
+    padding-left: 5px !important;
+}
+.pl-1 {
+    padding-left: 10px !important;
+}
+.pl-1l {
+    padding-left: 15px !important;
+}
+.pl-2 {
+    padding-left: 20px !important;
+}
+.pl-3 {
+    padding-left: 30px !important;
+}
+.pb-0 {
+    padding-bottom: 0 !important;
+}
+.pb-l {
+    padding-bottom: 5px !important;
+}
+.pb-1 {
+    padding-bottom: 10px !important;
+}
+.pb-1l {
+    padding-bottom: 15px !important;
+}
+.pb-2 {
+    padding-bottom: 20px !important;
+}
+.pb-3 {
+    padding-bottom: 30px !important;
+}
+.pr-0 {
+    padding-right: 0 !important;
+}
+.pr-l {
+    padding-right: 5px !important;
+}
+.pr-1 {
+    padding-right: 10px !important;
+}
+.pr-1l {
+    padding-right: 15px !important;
+}
+.pr-2 {
+    padding-right: 20px !important;
+}
+
+/**
+ * 常用文字类样式
+ */
+.strong {
+    font-weight: bold;
+}
+.h1 {
+    font-size: 36px !important;
+}
+.h2 {
+    font-size: 30px !important;
+}
+.h3 {
+    font-size: 24px !important;
+}
+.h4 {
+    font-size: 18px !important;
+}
+.h5 {
+    font-size: 14px !important;
+}
+.h6 {
+    font-size: 12px !important;
+}
+/**
+ * 文字开头间距
+ */
+.text-indent {
+    text-indent: 2em;
+}
+/**
+ * 小字体，用于备注类
+ */
+.text-small {
+    font-size: 85% !important;
+}
+/**
+ * 文字常用颜色，分别为primary，success，danger，info，warning
+ */
+.text-primary {
+    color: #409EFF;
+}
+.text-success{
+    color: #67C23A;
+}
+.text-danger{
+    color: #F56C6C;
+}
+.text-info{
+    color: #909399;
+}
+.text-warning{
+    color: #E6A23C;
+}
+/**
+ * 背景常用颜色，分别为primary，success，danger，info，warning
+ */
+.bg-primary{
+    color:#FFF;
+    background:#409EFF;
+}
+.bg-success{
+    color:#FFF;
+    background: #67C23A;
+}
+.bg-danger{
+    color:#FFF;
+    background: #F56C6C;
+}
+.bg-info{
+    color:#FFF;
+    background: #909399;
+}
+.bg-warning{
+    color:#FFF;
+    background: #E6A23C;
+}
+
+/**
+ * 浮动位置
+ */
+.pull-left {
+    float: left !important;
+}
+.pull-right {
+    float: right !important;
+}
+/**
+ * 显示与隐藏
+ */
+.show {
+    display: block !important;
+}
+.hide,.hidden {
+    display: none !important;
+}
+
+
+/**
+ * flex布局样式
+ * 示例：
+ * .flex-row             横向排列纵向居中对齐
+ * .flex-column          纵向排列横向居中对齐
+ * .flex-row-box         横向排列盒子
+ * .flex-column-box      纵向排列盒子
+ * .f-1                  在flex布局盒子内部所占比例
+ * .f-r-l                flex-row横轴靠左侧对齐
+ * .f-r-r                flex-row横轴靠右侧对齐
+ * .f-r-c                flex-row横轴居中对齐
+ * .f-c-t                flex-column竖轴头对齐
+ * .f-c-b                flex-column竖轴底对齐
+ * .f-c-c                flex-column竖轴居中对齐
+ * .f-a-s                align-items为副轴（即flex-row则align-items为竖轴方向控制，flex-column则align-items为横轴方向控制）
+ * 更多用法可参考：https://www.runoob.com/w3cnote/flex-grammar.html
+ */
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.flex-row-box{
+    display: flex;
+    flex-direction: row;
+}
+.flex-column-box{
+    display: flex;
+    flex-direction: column;
+}
+.f-r-l,.f-c-t{justify-content: flex-start;}
+.f-r-r,.f-c-b{justify-content: flex-end;}
+.f-r-c,.f-c-c{justify-content: center;}
+.f-a-s{align-items: flex-start;}
+.f-a-e{align-items: flex-end;}
+.f-a-c{align-items: center;}
+
+.f-1{flex: 1;}
+.f-2{flex: 2;}
+.f-3{flex: 3;}
+.f-4{flex: 4;}
+.f-5{flex: 5;}
+.f-6{flex: 6;}
+.f-7{flex: 7;}
+.f-7{flex: 7;}
+/**
+  flex实现【左中右】布局
+  示例1：
+  <div class="flex-row-box">
+    <div style="width:200px"></div>
+    <div class="f-1"></div>
+    <div style="width:200px"></div>
+  </div>
+ */
+/**
+  flex实现【上中下】布局
+  示例1：
+  <div class="flex-column-box">
+    <div style="height:60px"></div>
+    <div class="f-1"></div>
+    <div style="height:100px"></div>
+  </div>
+ */
+/**
+  flex实现【上(右左)】布局
+  示例1：
+  <div class="flex-column-box">
+    <div style="height:60px"></div>
+    <div class="flex-row-box f-1">
+        <div style="width:200px"></div>
+        <div class="f-1"></div>
+    </div>
+  </div>
+ */
+/**
+  flex实现【上(左中右)】布局
+  示例1：
+  <div class="flex-column-box">
+    <div style="height:60px"></div>
+    <div class="flex-row-box f-1">
+        <div style="width:200px"></div>
+        <div class="f-1"></div>
+        <div style="width:200px"></div>
+    </div>
+  </div>
+ */

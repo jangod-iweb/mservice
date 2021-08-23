@@ -1,0 +1,9 @@
+{
+  "app_key":"",
+  "app_security":"",
+  "base_url":"/local",
+  "depends": ["demo"],
+  "depends_mobile":[],
+  "home_page":"/demo",
+  "login_page":""
+}

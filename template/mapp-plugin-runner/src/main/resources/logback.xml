@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <property name="FILE_DIRECTORY" value="logs"/>
+    <property name="FILE_NAME" value="{{name}}"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <appender name="FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <file>${FILE_DIRECTORY}/${FILE_NAME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${FILE_DIRECTORY}/${FILE_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+    <appender name="ERROR"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <file>${FILE_DIRECTORY}/${FILE_NAME}_error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${FILE_DIRECTORY}/${FILE_NAME}_error.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="SQL"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <file>${FILE_DIRECTORY}/${FILE_NAME}_sql.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${FILE_DIRECTORY}/${FILE_NAME}_sql.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="org.springframework" additivity="false"  level="error"><appender-ref ref="CONSOLE"/><appender-ref ref="ERROR"/></logger>
+    <logger name="com.alibaba.druid" additivity="false"  level="error"><appender-ref ref="CONSOLE"/><appender-ref ref="ERROR"/></logger>
+    <logger name="org.apache.dubbo" additivity="false"  level="error"><appender-ref ref="CONSOLE"/><appender-ref ref="ERROR"/></logger>
+    <logger name="org.apache.zookeeper" additivity="false"  level="error"><appender-ref ref="CONSOLE"/><appender-ref ref="ERROR"/></logger>
+    <logger name="com.gitee.starblues" additivity="false"  level="error"><appender-ref ref="CONSOLE"/><appender-ref ref="ERROR"/></logger>
+    <logger name="org.pf4j" additivity="false" level="error"><appender-ref ref="CONSOLE"/><appender-ref ref="ERROR"/></logger>
+    <logger name="org.quartz" additivity="false"  level="error"><appender-ref ref="CONSOLE"/><appender-ref ref="ERROR"/></logger>
+    <logger name="com.baomidou.mybatisplus" additivity="false"  level="error"><appender-ref ref="CONSOLE"/><appender-ref ref="ERROR"/></logger>
+    <logger name="springfox.documentation.spring" additivity="false"  level="error"><appender-ref ref="CONSOLE"/><appender-ref ref="ERROR"/></logger>
+    <logger name="io.swagger.models.parameters" additivity="false" level="off"/>
+    <logger name="org.jangod.iweb.logging.Slf4jImpl"  additivity="false" level="debug">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="SQL"/>
+    </logger>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="ERROR"/>
+    </root>
+</configuration>
