@@ -7,7 +7,7 @@
     </template>
     <div v-if="markdownBox" v-html class="markdown">
       <body marginwidth="0" marginheight="0">
-      <div id="container"><h1 id="-" className="title">深圳市政务项目前端开发</h1>
+      <div id="container"><h1 id="-" className="title">mweb前端开发</h1>
         <h3 id="1-">1、安装依赖</h3>
         <p><strong>1.安装node最新环境</strong></p>
         <p><strong>2.安装cnpm <code>npm install -g cnpm</code></strong></p>
@@ -130,7 +130,7 @@ export default {
   },
   data() {
     return {
-      value: "深圳市政务项目前端开发项目框架",
+      value: " mweb前端开发项目框架",
       markdownBox: false
     }
   },
