@@ -16,7 +16,7 @@
     <modules>
         <module>{{name}}-api</module>
         <module>{{name}}-plugin</module>
-        <module>{{name}}-plugin-runner</module>
+        <module>{{name}}-runner</module>
     </modules>
 
 </project>

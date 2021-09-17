@@ -15,7 +15,7 @@ profileId:
 
 ## 运行
 ``` shell
-cd demo-plugin-runner/target/demo-plugin-runner/bin
+cd demo-runner/target/demo-runner/bin
 
 # linux下运行
 ./startup.sh

@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationListener;
 
 @SpringBootApplication
 @Slf4j
-public class {{#firstToUpper name}}{{/firstToUpper}}Application implements ApplicationListener<WebServerInitializedEvent> {
+public class {{#firstToUpper name}}{{/firstToUpper}}RunnerApplication implements ApplicationListener<WebServerInitializedEvent> {
 
     public static void main(String[] args) {
         SpringApplication.run({{#firstToUpper name}}{{/firstToUpper}}Application.class, args);

@@ -4,7 +4,7 @@
 ## 程序运行
 ```
 # 后台启动
-1. {{name}}-plugin-runner中StartupApplication执行Debug
+1. {{name}}-runner中StartupApplication执行Debug
 2. 接口调试 http://localhost:{{backendPort}}/doc.html
 # 前台启动
 1. cnpm run dev
@@ -24,7 +24,7 @@
 │   ├── disabled.txt                    // 禁用的插件
 │   ├── enabled.txt                     // 启用的插件
 │   └── pom.xml                         // 插件依赖
-├── {{name}}-plugin-runner              // 系统启动程序
+├── {{name}}-runner              // 系统启动程序
 └── pom.xml               		        // 模块依赖
 ```
 
@@ -46,7 +46,7 @@
 │   └── plugin.properties               // 插件描述文件
 ```
 
-### 系统启动程序(igp-plugin-runner)
+### 系统启动程序({{name}}-runner)
 > main下目录定义
 ```
 ├── build    					 	    // 程序启动脚本

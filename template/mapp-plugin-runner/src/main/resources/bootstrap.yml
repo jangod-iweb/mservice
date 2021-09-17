@@ -1,0 +1,45 @@
+server:
+  port: {{backendPort}}
+  servlet:
+    context-path:
+
+# 应用相关配置
+app:
+  # 工作Id，集群模式中指定防止id生成重复
+  workId: 1
+  code: {{name}}-runner
+  title: {{name}}-RUNNER
+  # 基于网关的鉴权token
+  cloudToken: 791685057029865473
+  nacos:
+    server-addr: {{nacosAddr}}
+    username: {{nacosUsername}}
+    password: '{{nacosPassword}}'
+    namespace: '{{nacosNamespace}}'
+spring:
+  application:
+    # 应用名称
+    name: ${app.code}
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${app.nacos.server-addr}
+        username:  ${app.nacos.username}
+        password: ${app.nacos.password}
+        namespace: ${app.nacos.namespace}
+        metadata:
+          management:
+            context-path: '${server.servlet.context-path}/actuator'
+      config:
+        # 配置中心地址
+        server-addr:  ${app.nacos.server-addr}
+        username: ${app.nacos.username}
+        password: ${app.nacos.password}
+        namespace: ${app.nacos.namespace}
+        # 配置文件格式
+        file-extension: yml
+        # 共享配置
+        shared-configs:
+        - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
