@@ -25,8 +25,8 @@ function formatFileName(originFileName,prompts){
     fileName = fileName.replace(`${originPackagePath}/`,`${packagePath}/`);
   }
   
-  if(fileName.indexOf(`${originName}-runner/`)==0){
-    fileName = fileName.replace(`${originName}-runner/`,`${name}-runner/`);
+  if(fileName.indexOf(`${originName}-plugin-runner/`)==0){
+    fileName = fileName.replace(`${originName}-plugin-runner/`,`${name}-runner/`);
 
     if(fileName.indexOf(`${cOriginName}Application.java`)>-1){
       fileName = fileName.replace(`${cOriginName}Application.java`,`${cName}RunnerApplication.java`);
