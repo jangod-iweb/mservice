@@ -4,12 +4,13 @@
 ## 程序运行
 ```
 # 后台启动
-1. {{name}}-runner中StartupApplication执行Debug
+1. {{name}}-runner中{{#firstToUpper name}}{{/firstToUpper}}RunnerApplication执行Debug
 2. 接口调试 http://localhost:{{backendPort}}/doc.html
 # 前台启动
 1. cnpm run dev
 2. 页面访问 http://localhost:{{webPort}}/
 ```
+
 ## 后端结构
 ```
 ├── {{name}}-api                        // 对外接口模块(主要包括api接口类，bean及第三方依赖包)
@@ -38,11 +39,11 @@
 │   ├── properties      		        // 配置类定义
 │   ├── service      		            // 服务层
 │   ├── util      		     	        // 内部工具类
-│   └── {{name}}{{pluginName}}Plugin.java // 插件定义类
+│   └── {{#firstToUpper name}}{{/firstToUpper}}Plugin.java     // 插件定义类
 ├── resource           
 │   ├── db			 			        // 数据库初始化类
 │   ├── mybatis/mappers/{{pluginName}}  // mybatis xml文件
-│   ├── igp-plugin-biz.yml		        // 插件配置文件
+│   ├── {{name}}-plugin-{{pluginName}}.yml		        // 插件配置文件
 │   └── plugin.properties               // 插件描述文件
 ```
 
@@ -51,15 +52,10 @@
 ```
 ├── build    					 	    // 程序启动脚本
 ├── java                      	 
-│   └── {{name}}Application.java      	// 程序启动类
+│   └── {{#firstToUpper name}}{{/firstToUpper}}RunnerApplication      	// 程序启动类
 ├── resource           
-│   ├── config
-│   │    └──application-cache.xml	    // 缓存配置
-│   │    └──application-db.xml		    // 数据库配置(支持文件及数据库配置数据源)
-│   │    └──application-dubbo.xml	    // dubbo配置
-│   │    └──application-plugin.xml	    // 插件配置
-│   ├── dubbo			 		 	    // dubbo服务描述
-│   ├── application.xml		     	    // 主配置文件
+│   ├── application.xml		     	    // 本地环境配置文件
+│   ├── bootstrap.yml		     	    // 主配置文件
 │   ├── license		 			 	    // 插件配置文件
 │   └── logback.xml        		 	    // 日志文件
 ```

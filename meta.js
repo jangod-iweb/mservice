@@ -129,10 +129,24 @@ module.exports = {
       "message": "前端端口号",
       "required": false,
       "default": 9301
+    },
+    "isWebDocs": {
+      "type": "confirm",
+      "required": true,
+      "message": "是否创建在线文档",
+      "default": false
+    },
+    "webDocPort": {
+      "when": "isWebDocs",
+      "type": "int",
+      "message": "在线文档端口号",
+      "required": false,
+      "default": 9303
     }
   },
   "filters": {
-    "mapp-plugin/mapp-plugin-demo/web/**": "isWeb"
+    "mapp-plugin/mapp-plugin-demo/web/**": "isWeb",
+    "mapp-plugin/mapp-plugin-demo/web-docs/**": "isWebDocs"
   },
   helpers: {
     firstToUpper(str) {

@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class {{#firstToUpper name}}{{/firstToUpper}}RunnerApplication extends AbstractApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run({{#firstToUpper name}}{{/firstToUpper}}Application.class, args);
+        SpringApplication.run({{#firstToUpper name}}{{/firstToUpper}}RunnerApplication.class, args);
     }
 
 }

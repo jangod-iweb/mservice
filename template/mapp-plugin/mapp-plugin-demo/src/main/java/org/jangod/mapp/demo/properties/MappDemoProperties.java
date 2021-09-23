@@ -5,7 +5,7 @@ import lombok.Data;
 import org.jangod.iweb.mapp.config.MappMpAndResourceConfig;
 
 @Data
-@ConfigDefinition(fileName="{{name}}-plugin-{{pluginName}}.yml")
+@ConfigDefinition(fileName="chendeming-plugin-news.yml")
 public class MappDemoProperties extends MappMpAndResourceConfig {
     private String dsId;
 }
