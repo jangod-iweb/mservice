@@ -19,8 +19,11 @@ module.exports = {
         open: true,
         proxy:{
             '/local': {
-                target: 'http://127.0.0.1:{{backendPort}}/',
+                target: 'http://127.0.0.1:{{backendPort}}',
                 changeOrigin: true,
+                pathRewrite: {
+                    '^/local': ''
+                }
             }
         }
     },

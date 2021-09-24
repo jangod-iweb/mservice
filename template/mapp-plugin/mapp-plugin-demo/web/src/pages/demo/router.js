@@ -6,12 +6,34 @@ import IWebSaas from '@jangod/iweb-saas';
  */
 const Service = [
     {
-        path: '/demo',
-        name: 'demo',
+        path: '/welcome',
+        name: 'welcome',
         meta: {
             requireAuth: false
         },
-        component: () => import('./index.vue')
+        component: () => import('./welcome.vue')
+    },
+    {
+        path: '/demo/',
+        name: 'demo',
+        redirect:"/demo/index",
+        component: IWebSaas.NarrowSide,
+        children: [
+            {
+                path: 'index',
+                name: 'home',
+                meta: {},
+                component: () => import('./demo.vue')
+            },
+            {
+                path: 'info',
+                name: 'info',
+                meta: {
+                    activePath:"/demo/index"
+                },
+                component: () => import('./info.vue')
+            }
+        ]
     }
 ];
 export default Service

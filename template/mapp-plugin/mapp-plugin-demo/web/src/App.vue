@@ -1,10 +1,12 @@
 <template>
-    <router-view/>
+  <router-view/>
 </template>
 
 <script>
+import IwebSaas from '@jangod/iweb-saas'
 export default {
   name: 'App',
+  mixins: [IwebSaas.AppBase],
   data(){
     return{
 
@@ -21,6 +23,9 @@ export default {
 </script>
 
 <style>
+.inner-padding {
+  padding: 15px;
+}
 @media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
   /*兼容IE11隐藏滚动条*/
   *{

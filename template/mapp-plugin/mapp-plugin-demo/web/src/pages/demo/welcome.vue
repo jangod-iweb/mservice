@@ -1,13 +1,16 @@
 <template>
-  <div className="demo flex-column">
+  <div class="demo flex-column">
     <template v-if="!markdownBox">
-      <h2 className="mb-l">欢迎使用</h2>
-      <div className="title">{{ value }}</div>
-      <span @click="markdownBox=true" class="doc mt-l">使用说明</span>
+      <h2 class="mb-l">欢迎使用</h2>
+      <div class="title">mweb前端开发项目框架</div>
+      <iu-flex align="center" valign="center" class="mt-1">
+        <el-button type="primary" @click="$router.push('/demo/index')">进入项目</el-button>
+        <el-button @click="markdownBox=true">使用说明</el-button>
+      </iu-flex>
     </template>
     <div v-if="markdownBox" v-html class="markdown">
       <body marginwidth="0" marginheight="0">
-      <div id="container"><h1 id="-" className="title">mweb前端开发</h1>
+      <div id="container"><h1 id="-" class="title">mweb前端开发</h1>
         <h3 id="1-">1、安装依赖</h3>
         <p><strong>1.安装node最新环境</strong></p>
         <p><strong>2.安装cnpm <code>npm install -g cnpm</code></strong></p>
@@ -16,10 +19,10 @@
         <h3 id="2-">2、项目配置</h3>
         <p><strong>1.基础服务配置文件<code>/config/application.json</code></strong></p>
         <pre><code>    参数说明:
-              <span className="hljs-tag">appId</span>   (项目唯一编码)
-              <span className="hljs-tag">active</span>  (当前启用模式<span className="hljs-attr_selector">[dev/pro]</span>)
-              <span className="hljs-tag">version</span> (当前运行项目版本)<span className="hljs-attr_selector">[用于项目更新]</span>
-              <span className="hljs-tag">context</span> (项目虚拟路径)
+              <span class="hljs-tag">appId</span>   (项目唯一编码)
+              <span class="hljs-tag">active</span>  (当前启用模式<span class="hljs-attr_selector">[dev/pro]</span>)
+              <span class="hljs-tag">version</span> (当前运行项目版本)<span class="hljs-attr_selector">[用于项目更新]</span>
+              <span class="hljs-tag">context</span> (项目虚拟路径)
       </code></pre>
         <p><strong>2.启动模式配置<code>/config/application-&lt;模式&gt;.json文件</code></strong></p>
         <pre><code>    参数说明:
@@ -31,14 +34,14 @@
         <p><strong>3.使用配置文件<code>/src/api/app.config.js</code></strong></p>
         <pre><code>    使用说明:
               项目中需要使用配置文件信息,只需引入 /src/api/app.config.js 即可
-              引入方式：<span className="hljs-keyword">import</span> config <span className="hljs-keyword">from</span> <span
-              className="hljs-string">"@/api/app.config.js"</span>
+              引入方式：<span class="hljs-keyword">import</span> config <span class="hljs-keyword">from</span> <span
+              class="hljs-string">"@/api/app.config.js"</span>
       </code></pre>
         <h3 id="3-">3、启动项目</h3>
         <p><strong><code>npm run dev</code></strong></p>
         <h3 id="4-">4、访问项目</h3>
-        <pre><code><span className="hljs-bullet">* </span>页面访问入口地址
-      <span className="hljs-bullet">* </span>http://0.0.0.0:8082/demo
+        <pre><code><span class="hljs-bullet">* </span>页面访问入口地址
+      <span class="hljs-bullet">* </span>http://0.0.0.0:{{ webPort }}/demo
       </code></pre>
         <h3 id="5-">5、项目打包</h3>
         <p><strong>1.修改 <code>/config/application.json</code> 中的 version [版本号]</strong></p>
@@ -46,12 +49,12 @@
         <p><strong>3.在根目录生成<code>dist</code>资源目录，与<code>/target/dist_[版本号]</code>的zip压缩包</strong></p>
         <p><strong>说明：<code>/target/dist_[版本号].zip</code>就是<code>dist</code>目录的打包文件</strong></p>
         <h3 id="-">扩展信息</h3>
-        <pre><code><span className="hljs-number">1</span>、接口代理配置 vue.config.js
+        <pre><code><span class="hljs-number">1</span>、接口代理配置 vue.config.js
           参数说明：
               devServer &gt; proxy
-              配置示例说明<span className="hljs-symbol">:</span>
-              <span className="hljs-string">'/api'</span><span className="hljs-symbol">:</span> { <span
-              className="hljs-regexp">//</span>代理接口前缀为/api的请求
+              配置示例说明<span class="hljs-symbol">:</span>
+              <span class="hljs-string">'/api'</span><span class="hljs-symbol">:</span> { <span
+              class="hljs-regexp">//</span>代理接口前缀为/api的请求
                   <span class="hljs-symbol">target:</span> <span
               class="hljs-string">'http://localhost:5000'</span>, <span class="hljs-regexp">//</span>需要代理到的目标地址
                   <span class="hljs-symbol">ws:</span> <span class="hljs-keyword">true</span>, <span
@@ -124,13 +127,12 @@
 
 <script>
 export default {
-  name: "demo",
+  name: "welcome",
   components: {
     //组件
   },
   data() {
     return {
-      value: " mweb前端开发项目框架",
       markdownBox: false
     }
   },
@@ -172,6 +174,10 @@ export default {
     color: #ccc;
     cursor: pointer;
     text-decoration: underline;
+  }
+
+  .into{
+    color: orange;
   }
 
   @keyframes naughty {

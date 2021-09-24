@@ -360,19 +360,19 @@ body {
  * 文字常用颜色，分别为primary，success，danger，info，warning
  */
 .text-primary {
-    color: #409EFF;
+    color: #409EFF !important;
 }
 .text-success{
-    color: #67C23A;
+    color: #67C23A !important;
 }
 .text-danger{
-    color: #F56C6C;
+    color: #F56C6C !important;
 }
 .text-info{
-    color: #909399;
+    color: #909399 !important;
 }
 .text-warning{
-    color: #E6A23C;
+    color: #E6A23C !important;
 }
 /**
  * 背景常用颜色，分别为primary，success，danger，info，warning

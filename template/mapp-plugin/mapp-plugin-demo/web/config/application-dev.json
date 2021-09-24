@@ -4,6 +4,6 @@
   "base_url":"/local",
   "depends": ["demo"],
   "depends_mobile":[],
-  "home_page":"/demo",
-  "login_page":""
+  "home_page":"/welcome",
+  "login_page":"http://203.175.139.42/p/csp-plugin-bsp/sso/login"
 }
