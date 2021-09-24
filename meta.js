@@ -26,10 +26,10 @@ function formatFileName(originFileName,prompts){
   }
   
   if(fileName.indexOf(`${originName}-plugin-runner/`)==0){
-    fileName = fileName.replace(`${originName}-plugin-runner/`,`${name}-plugin-runner/`);
+    fileName = fileName.replace(`${originName}-plugin-runner/`,`${name}-runner/`);
 
     if(fileName.indexOf(`${cOriginName}Application.java`)>-1){
-      fileName = fileName.replace(`${cOriginName}Application.java`,`${cName}Application.java`);
+      fileName = fileName.replace(`${cOriginName}Application.java`,`${cName}RunnerApplication.java`);
     }
   }
   else if(fileName.indexOf(`${originName}-plugin/`)==0){
@@ -93,6 +93,30 @@ module.exports = {
       "message": "后台端口号",
       "default": 9302
     },
+    "nacosAddr": {
+      "type": "string",
+      "required": true,
+      "message": "nacos注册中心地址",
+      "default": "127.0.0.1:8848"
+    },
+    "nacosUsername": {
+      "type": "string",
+      "required": true,
+      "message": "nacos用户名",
+      "default": "nacos"
+    },
+    "nacosPassword": {
+      "type": "string",
+      "required": true,
+      "message": "nacos密码",
+      "default": "nacospassword"
+    },
+    "nacosNamespace": {
+      "type": "string",
+      "required": true,
+      "message": "nacos命名空间",
+      "default": "nacosnamespace"
+    },
     "isWeb": {
       "type": "confirm",
       "required": true,
@@ -105,10 +129,24 @@ module.exports = {
       "message": "前端端口号",
       "required": false,
       "default": 9301
+    },
+    "isWebDocs": {
+      "type": "confirm",
+      "required": true,
+      "message": "是否创建在线文档",
+      "default": false
+    },
+    "webDocPort": {
+      "when": "isWebDocs",
+      "type": "int",
+      "message": "在线文档端口号",
+      "required": false,
+      "default": 9303
     }
   },
   "filters": {
-    "mapp-plugin/mapp-plugin-demo/web/**": "isWeb"
+    "mapp-plugin/mapp-plugin-demo/web/**": "isWeb",
+    "mapp-plugin/mapp-plugin-demo/web-docs/**": "isWebDocs"
   },
   helpers: {
     firstToUpper(str) {

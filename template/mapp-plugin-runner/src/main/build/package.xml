@@ -13,6 +13,21 @@
             <fileMode>0744</fileMode>
         </fileSet>
         <fileSet>
+            <directory>src/main/build/logs</directory>
+            <outputDirectory>/logs</outputDirectory>
+            <fileMode>0444</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/build/pluginFile</directory>
+            <outputDirectory>/pluginFile</outputDirectory>
+            <fileMode>0444</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/build/tmp</directory>
+            <outputDirectory>/tmp</outputDirectory>
+            <fileMode>0444</fileMode>
+        </fileSet>
+        <fileSet>
             <directory>src/main/resources</directory>
             <outputDirectory>/</outputDirectory>
             <includes>

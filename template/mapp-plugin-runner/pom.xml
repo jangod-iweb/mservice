@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>{{name}}-plugin-runner</artifactId>
+    <artifactId>{{name}}-runner</artifactId>
     <packaging>jar</packaging>
     <properties>
         <sso-bsp-version>3.1.2</sso-bsp-version>
@@ -20,15 +20,11 @@
             <groupId>org.jangod.iweb</groupId>
             <artifactId>jangod-iweb-mapp-starter</artifactId>
         </dependency>
+
         <dependency>
-            <groupId>org.jangod.iweb</groupId>
-            <artifactId>jangod-iweb-sso-csp</artifactId>
-            <version>${sso-bsp-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jangod.iweb</groupId>
-            <artifactId>jangod-iweb-sso-csp</artifactId>
-            <version>${jangod.iweb.version}</version>
+            <groupId>org.jangod.csp-frame</groupId>
+            <artifactId>csp-common-sso-uaa</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <!-- 缓存扩展程序开始 -->
@@ -61,7 +57,7 @@
                     <archive>
                         <manifest>
                             <useUniqueVersions>false</useUniqueVersions>
-                            <mainClass>{{packageName}}.{{#firstToUpper name}}{{/firstToUpper}}Application</mainClass>
+                            <mainClass>{{packageName}}.{{#firstToUpper name}}{{/firstToUpper}}RunnerApplication</mainClass>
                             <addClasspath>false</addClasspath>
                         </manifest>
                     </archive>
