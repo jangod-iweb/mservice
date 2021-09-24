@@ -2,4 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="{{packageName}}.{{pluginName}}.mapper.PubNewsTypeMapper">
 
+    <update id="updateStatus">
+        UPDATE PUB_NEWS_TYPE SET
+            STATUS = #{status,jdbcType=VARCHAR}
+        WHERE COMPANY_ID = #{companyId,jdbcType=VARCHAR} AND ID = #{id,jdbcType=VARCHAR}
+    </update>
+
 </mapper>

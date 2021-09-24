@@ -56,7 +56,7 @@ public class NewsController extends AbstractController {
             @ApiImplicitParam(name = "page", value = "第几页", required = true, paramType = "query", dataType = "int", example = "1"),
             @ApiImplicitParam(name = "rows", value = "页大小", required = true, paramType = "query", dataType = "int", example = "10")
     })
-    @PostMapping("/paginateNews")
+    @GetMapping("/paginateNews")
     public ResultList<PubNewsVO> paginateNews(@RequestParam int page,@RequestParam int rows){
         try{
             // 做插件要有租户的概念，不同的公司应该看到不一样的东西
@@ -75,7 +75,7 @@ public class NewsController extends AbstractController {
      * @return
      */
     @ApiOperation("查询新闻资讯详情")
-    @PostMapping("/getNewsInfo")
+    @GetMapping("/getNewsInfo")
     public ResultObject getNewsInfo(@ApiParam("新闻资讯ID") @RequestParam(value = "id") String newsId){
         try{
             // 做插件要有租户的概念，不同的公司应该看到不一样的东西
@@ -120,20 +120,20 @@ public class NewsController extends AbstractController {
     public Result delNews(@ApiParam("新闻资讯ID") @RequestParam(value = "id") String id){
         try{
             if(StringUtils.isEmpty(id)){
-                return ResultUtil.errorToList("删除失败，id参数未定义");
+                return ResultUtil.error("删除失败，id参数未定义");
             }
             String companyId = getCompanyId();
             if(StringUtils.isEmpty(companyId)){
-                return ResultUtil.errorToObject("companyId为空,用户未登录");
+                return ResultUtil.error("companyId为空,用户未登录");
             }
             // 尽量用lambda，属性修改的时候好处理
             LambdaQueryWrapper<PubNews> wrapper = new QueryWrapper<PubNews>().lambda();
             wrapper.eq(PubNews::getId,id);
             wrapper.eq(PubNews::getCompanyId,companyId);
             pubNewsService.remove(wrapper);
-            return ResultUtil.success("删除成功！");
+            return ResultUtil.success("新闻资讯删除成功！");
         }catch (Exception e){
-            return ResultUtil.error("删除失败："+e.getMessage());
+            return ResultUtil.error("新闻资讯删除失败："+e.getMessage());
         }
     }
 
@@ -141,9 +141,9 @@ public class NewsController extends AbstractController {
     /**
      * 查询新闻类型树
      */
-    @ApiOperation("查询新闻类型列表")
-    @PostMapping("/listNewsType")
-    public ResultList listNewsType(){
+    @ApiOperation("查询新闻资讯类型列表")
+    @GetMapping("/listNewsType")
+    public ResultList<PubNewsTypeVO> listNewsType(){
         try{
             String companyId = getCompanyId();
             if(StringUtils.isEmpty(companyId)){
@@ -159,25 +159,25 @@ public class NewsController extends AbstractController {
     /**
      * 保存新闻类型
      */
-    @ApiOperation("保存新闻类型")
+    @ApiOperation("保存新闻资讯类型")
     @PostMapping("/saveNewsType")
-    public Result saveNewsType(@RequestBody PubNewsType data){
+    public ResultObject<String> saveNewsType(@RequestBody PubNewsType data){
         try{
             String companyId = getCompanyId();
             if(StringUtils.isEmpty(companyId)){
-                return ResultUtil.errorToList("companyId为空,用户未登录");
+                return ResultUtil.errorToObject("companyId为空,用户未登录");
             }
-            pubNewsTypeService.saveNewsType(companyId,this.getCurrentUser(),data);
-            return ResultUtil.success("保存成功");
+            String id = pubNewsTypeService.saveNewsType(companyId,this.getCurrentUser(),data);
+            return ResultUtil.successToObject(id);
         }catch (Exception e){
-            return ResultUtil.errorToList("保存失败："+e.getMessage());
+            return ResultUtil.errorToObject("保存失败："+e.getMessage());
         }
     }
 
     /**
      * 删除新闻类型
      */
-    @ApiOperation("删除新闻类型")
+    @ApiOperation("删除新闻资讯类型")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "新闻类型ID",required = true, paramType = "query", dataType = "string")
     })
@@ -194,6 +194,8 @@ public class NewsController extends AbstractController {
             pubNewsTypeService.removeNewsType(companyId,id);
             return ResultUtil.success("删除成功");
         }catch (Exception e){
+            log.error("新闻资讯类型删除失败！");
+            e.printStackTrace();
             return ResultUtil.error("删除失败："+e.getMessage());
         }
     }

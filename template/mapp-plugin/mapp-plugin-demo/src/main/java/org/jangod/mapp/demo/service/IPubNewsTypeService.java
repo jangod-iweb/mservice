@@ -29,7 +29,7 @@ public interface IPubNewsTypeService {
      * @param user 当前操作人信息
      * @param data 新闻资讯类型
      * */
-    void saveNewsType(String companyId, IUser user, PubNewsType data);
+    String saveNewsType(String companyId, IUser user, PubNewsType data);
 
     /**
      * <p>删除新闻资讯类型</p>

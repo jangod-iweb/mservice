@@ -95,7 +95,7 @@ public class PubNewsServiceImpl extends ServiceImplWrapper<PubNewsMapper, PubNew
         if(StringUtils.isNotEmpty(data.getId())){
             data.setLastModifitionTime(new Date());
             data.setLastModifitor(user.getId());
-            saveOrUpdate(data);
+            updateById(data);
         }else {
             data.setId(Tools.genId()+"");
             data.setCompanyId(companyId);

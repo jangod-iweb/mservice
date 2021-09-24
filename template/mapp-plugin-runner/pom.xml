@@ -57,7 +57,7 @@
                     <archive>
                         <manifest>
                             <useUniqueVersions>false</useUniqueVersions>
-                            <mainClass>{{packageName}}.{{#firstToUpper name}}{{/firstToUpper}}Application</mainClass>
+                            <mainClass>{{packageName}}.{{#firstToUpper name}}{{/firstToUpper}}RunnerApplication</mainClass>
                             <addClasspath>false</addClasspath>
                         </manifest>
                     </archive>

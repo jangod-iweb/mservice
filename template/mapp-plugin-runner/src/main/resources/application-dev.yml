@@ -19,9 +19,9 @@ spring:
           url: jdbc:h2:mem:h2temp
         demo:
           driverClassName: com.mysql.jdbc.Driver
-          url: 'jdbc:mysql://127.0.0.1:3306/dv_db_news?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&useSSL=false'
-          username: root
-          password: '123456'
+          url: 'jdbc:mysql://203.175.139.40:3306/dv_db_demo?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&useSSL=false'
+          username: demo
+          password: '123456a?'
 
 #app:
 #  l1ClassName: org.jangod.iweb.plugin.cache.redis.RedisCacheProvider

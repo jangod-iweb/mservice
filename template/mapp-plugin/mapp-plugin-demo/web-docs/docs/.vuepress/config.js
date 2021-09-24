@@ -1,7 +1,7 @@
 module.exports = {
-    title: 'ChendemingNews系统 - 开发文档',  // 设置网站标题
+    title: '{{#firstToUpper name}}{{/firstToUpper}}系统 - 开发文档',  // 设置网站标题
     description: '政务服务应用开发文档',
-    base: '/p/chendeming-plugin-news/docs/',
+    base: '/p/{{name}}-plugin-{{pluginName}}/docs/',
     port: 9101,
     dest: "./dist/iweb/",
     head: [

@@ -65,6 +65,14 @@
                                     <groupId>{{packageName}}</groupId>
                                     <artifactId>{{name}}-api-{{pluginName}}</artifactId>
                                 </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.jangod.csp-platform</groupId>
+                                    <artifactId>csp-api-bsp</artifactId>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.jangod.csp-platform</groupId>
+                                    <artifactId>csp-api-rc</artifactId>
+                                </artifactItem>
                             </artifactItems>
                             <includes>**/*.class</includes>
                             <outputDirectory>${project.build.directory}/classes</outputDirectory>

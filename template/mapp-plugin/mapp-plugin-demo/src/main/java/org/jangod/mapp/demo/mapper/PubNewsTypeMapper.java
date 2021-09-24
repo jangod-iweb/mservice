@@ -16,4 +16,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface PubNewsTypeMapper extends BaseMapper<PubNewsType> {
 
+    void updateStatus(PubNewsType data);
+
 }
