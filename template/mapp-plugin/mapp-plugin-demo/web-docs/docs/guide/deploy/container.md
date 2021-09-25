@@ -38,7 +38,7 @@
 
 3、将插件生成的版本包上传至开发者中心
 
-{{name}}-plugin/{{name}}-plugin-news/target/{{name}}-plugin-news-1.0.SNAPSHOT.jar
+{{name}}-plugin/{{name}}-plugin-{{pluginName}}/target/{{name}}-plugin-{{pluginName}}-1.0.SNAPSHOT.jar
 
 登录开发者中心，访问：数据 -> 数据源服务 -> 新增 -> 配置对应数据库链接（此时会获得一个数据源id）
 
@@ -66,7 +66,7 @@
 
 #### 如何在线调试后台接口
 
-    访问http://127.0.0.1:9302/doc.html，以swagger2在线接口文档方式进行调试
+    访问http://127.0.0.1:{{backendPort}}/doc.html，以swagger2在线接口文档方式进行调试
 
 #### linux上如何运行程序
 

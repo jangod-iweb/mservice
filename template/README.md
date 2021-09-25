@@ -1,15 +1,38 @@
 # 快速入门
+
 > 假设`{{name}}`为项目名称,`{{pluginName}}`为`{{name}}`项目中的一个业务模块
 
-## 程序运行
-```
-# 后台启动
-1. {{name}}-runner中{{#firstToUpper name}}{{/firstToUpper}}RunnerApplication执行Debug
-2. 接口调试 http://localhost:{{backendPort}}/doc.html
-# 前台启动
-1. cnpm run dev
-2. 页面访问 http://localhost:{{webPort}}/
-```
+## 开发必读
+
+    http://developers.iszgov.cn/iweb/
+
+## 开发环境
+
+    jdk（ version >= 1.8 ）
+    idea （用于编译运行后端程序）
+    maven（ version >= 3.0.0 ）
+    cnpm （用于编译运行前端程序）
+    vuepress （用于构建运行在线文档）
+
+
+## 本地调试
+
+    1、后端启动
+    
+        运行（或调试）{{name}}/{{name}}-runner中{{#firstToUpper name}}{{/firstToUpper}}RunnerApplication。
+        浏览器访问：http://127.0.0.1:{{backendPort}}/doc.html
+
+    2、前端启动
+
+        cd {{name}}/{{name}}-plugin-{{pluginName}}/web
+        cnpm run dev
+        浏览器访问：http://localhost:{{webPort}}/
+
+    3、在线文档
+        
+        cd {{name}}/{{name}}-plugin-{{pluginName}}/web-docs
+        cnpm run dev
+        浏览器访问：http://localhost:{{webDocPort}}/p/{{name}}-plugin-{{pluginName}}/docs/
 
 ## 后端结构
 ```
