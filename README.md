@@ -21,7 +21,7 @@
 vue init jangod-iweb/mservice demo
 
 # 编译
-cd {{name}}
+cd demo
 mvn clean install -P [profileId]
 profileId:
 	1开发模式: 不打包前端应用
@@ -34,18 +34,18 @@ profileId:
 
     1、后端启动
     
-        运行（或调试）{{name}}/{{name}}-runner中{{#firstToUpper name}}{{/firstToUpper}}RunnerApplication。
+        运行（或调试）demo/demo-runner中{{#firstToUpper name}}{{/firstToUpper}}RunnerApplication。
         浏览器访问：http://127.0.0.1:{{backendPort}}/doc.html
 
     2、前端启动
 
-        cd {{name}}/{{name}}-plugin-{{pluginName}}/web
+        cd demo/demo-plugin-{{pluginName}}/web
         cnpm run dev
         浏览器访问：http://localhost:{{webPort}}/
 
     3、在线文档
         
-        cd {{name}}/{{name}}-plugin-{{pluginName}}/web-docs
+        cd demo/demo-plugin-{{pluginName}}/web-docs
         cnpm run dev
         浏览器访问：http://localhost:{{webDocPort}}/
 
@@ -58,10 +58,10 @@ profileId:
 mvn clean install -P 2发布模式
 
 # 拷贝插件
-cp {{name}}/{{name}}-plugin-{{pluginName}}/target/{{name}}-plugin-{{pluginName}}-1.0.SNAPSHOT.jar {{name}}/{{name}}-runner/target/{{name}}-runner/{{name}}-plugin/
+cp demo/demo-plugin-{{pluginName}}/target/demo-plugin-{{pluginName}}-1.0.SNAPSHOT.jar demo/demo-runner/target/demo-runner/demo-plugin/
 
 # 容器启动
-cd {{name}}/{{name}}-runner/target/{{name}}-runner/bin
+cd demo/demo-runner/target/demo-runner/bin
 
 # linux下运行
 ./startup.sh
