@@ -69,7 +69,7 @@ export default {
     return {
         headerList:[
             {name:"标题",code:"title",value:""},
-            {name:"类型",code:"type",value:"",type:"cascader",list:[],props:{label:'name',value:'id',children:''}},
+            {name:"类型",code:"type",value:"",type:"cascader",list:[],props:{label:'name',value:'id',children:'pubNewsTypes'}},
             {name:"状态",code:"status",value:"",type:"select",list:[
                 {name:"上线",value:"1"},
                 {name:"下线",value:"0"}
