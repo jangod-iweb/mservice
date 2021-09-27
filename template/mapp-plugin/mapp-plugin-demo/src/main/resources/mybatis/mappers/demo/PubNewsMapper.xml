@@ -51,4 +51,23 @@
         ORDER BY N.TOP_FLAG,N.CREATION_TIME
     </select>
 
+    <select id="getNewsInfo" resultMap="pubNewsVO">
+        SELECT
+            N.ID,
+            N.COMPANY_ID,
+            N.TITLE,
+            N.TOP_FLAG,
+            LOGO,
+            N.SOURCE,
+            TYPE,
+            N.STATUS,
+            N.DEPT_ID,
+            N.CREATION_TIME,
+            N.LAST_MODIFITION_TIME,
+            N.CONTENT,
+            T.NAME TYPE_NAME
+        FROM PUB_NEWS N LEFT JOIN PUB_NEWS_TYPE T ON N.TYPE=T.ID
+        WHERE N.ID = #{id,jdbcType=VARCHAR}
+    </select>
+
 </mapper>

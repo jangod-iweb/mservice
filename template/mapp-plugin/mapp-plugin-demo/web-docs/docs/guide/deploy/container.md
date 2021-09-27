@@ -59,7 +59,7 @@
 
 容器部署插件（选择对应的容器，选择对应的插件版本，再点击启动）
 
-![部署插件](images/container/upload.png)
+![部署插件](images/container/deploy.png)
 
 
 ### 常见问题

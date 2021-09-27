@@ -24,7 +24,6 @@ public interface PubNewsMapper extends BaseMapper<PubNews> {
 
     List<PubNewsVO> listNews(Map<String,Object> param);
 
-    @Select("SELECT n.ID,n.COMPANY_ID,n.TITLE,n.TOP_FLAG,LOGO,n.SOURCE,TYPE,n.STATUS,n.DEPT_ID,n.CREATION_TIME,n.LAST_MODIFITION_TIME,n.CONTENT,t.NAME TYPE_NAME " +
-            " FROM PUB_NEWS n LEFT JOIN PUB_NEWS_TYPE t ON n.type=t.ID where n.ID='${id}'")
     PubNewsVO getNewsInfo(@Param("id") String id);
+
 }
