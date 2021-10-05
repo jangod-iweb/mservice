@@ -62,7 +62,7 @@
 │   ├── properties      		        // 配置类定义
 │   ├── service      		            // 服务层
 │   ├── util      		     	        // 内部工具类
-│   └── {{#firstToUpper name}}{{/firstToUpper}}Plugin.java     // 插件定义类
+│   └── {{#firstToUpper name}}{{/firstToUpper}}{{#firstToUpper pluginName}}{{/firstToUpper}}Plugin.java     // 插件定义类
 ├── resource           
 │   ├── db			 			        // 数据库初始化类
 │   ├── mybatis/mappers/{{pluginName}}  // mybatis xml文件

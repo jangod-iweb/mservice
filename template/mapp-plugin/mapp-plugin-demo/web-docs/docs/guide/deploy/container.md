@@ -3,7 +3,7 @@
 
 ## 部署架构
 
-![部署框架](./images/deploy/overview.png)
+![部署框架](./images/container/overview.png)
 
 插件程序部署必要依赖：
 

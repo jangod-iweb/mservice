@@ -12,8 +12,15 @@ features:
 footer: MIT Licensed | Copyright © Jangod. All Rights Reserved
 ---
 
-[常见问题F&Q](/faq/index.html)
-
 ::: danger 注意
 请遵守代码管理规范，禁止将代码泄漏到github等公网上。
 :::
+
+## 一句话介绍
+
+  本项目依据xx文件、xx政策，为进一步提升xx能力；计划依托xx契机，结合xx资源，通过xx手段，实现xx目标；进而解决了xx问题，提供了xx支撑，完成了xx优化。
+
+## 备注说明
+
+[常见问题F&Q](/faq/index.html)
+

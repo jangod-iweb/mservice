@@ -28,6 +28,7 @@
             <version>5.1.47</version>
             <scope>test</scope>
         </dependency>
+
         <!-- Jangod框架相关结束-->
         <dependency>
             <groupId>{{packageName}}</groupId>
@@ -99,15 +100,38 @@
                             <followSymlinks>false</followSymlinks>
                         </fileset>
                     </filesets>
+                    <skip>${web-build.skip}</skip>
                     <failOnError>false</failOnError>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>clean-web-docs-dist</id>
+                        <phase>initialize</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${basedir}/web-docs</directory>
+                            <includes>
+                                <include>dist/**/*</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                    <skip>${web-build.skip}</skip>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
-                    <skip>${buildWebSkip}</skip>
+                    <skip>${web-build.skip}</skip>
                 </configuration>
                 <executions>
                     <execution>
@@ -124,7 +148,6 @@
                             <workingDirectory>${basedir}/web</workingDirectory>
                         </configuration>
                     </execution>
-
                     <execution>
                         <id>exec-npm-run-build</id>
                         <phase>generate-resources</phase>
@@ -140,10 +163,37 @@
                             <workingDirectory>${basedir}/web</workingDirectory>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>exec1-npm-install</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>cnpm</executable>
+                            <arguments>
+                                <argument>install</argument>
+                            </arguments>
+                            <workingDirectory>${basedir}/web-docs</workingDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>exec1-npm-run-build</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>cnpm</executable>
+                            <arguments>
+                                <argument>run</argument>
+                                <argument>build</argument>
+                            </arguments>
+                            <workingDirectory>${basedir}/web-docs</workingDirectory>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
-
-
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
@@ -157,8 +207,26 @@
                             <outputDirectory>${basedir}/target/classes</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>web/dist/biz</directory>
+                                    <directory>web/dist</directory>
                                     <targetPath>static</targetPath>
+                                    <excludes>
+                                    </excludes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-web-docs</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>web-docs/dist/iweb</directory>
+                                    <targetPath>static/docs</targetPath>
                                     <excludes>
                                     </excludes>
                                 </resource>
