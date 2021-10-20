@@ -18,6 +18,14 @@ module.exports = {
         logo: "/assets/images/iweb-logo-text.png",
         nav: [
             {
+                text: '插件能力',
+                link: '/'
+            },
+            {
+                text: '快速接入',
+                link: '/integration/'
+            },
+            {
                 text: '部署手册',
                 items: [
                     {text: 'runner部署', link: '/guide/deploy/runner.md'},
@@ -28,6 +36,16 @@ module.exports = {
             {text: '常见问题', link: '/faq/'},
         ],
         sidebar: {
+            "/integration": [
+                {
+                    title: '接入规范',   // 必要的
+                    collapsable: true, // 可选的, 默认值是 true,
+                    sidebarDepth: 2,    // 可选的, 默认值是 1
+                    children: [
+                        // 对接参与角色、系统
+                    ]
+                }
+            ],
             "/guide/": [
                 {
                     title: '部署手册',   // 必要的

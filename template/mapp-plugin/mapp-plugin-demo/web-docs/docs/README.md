@@ -16,9 +16,18 @@ footer: MIT Licensed | Copyright © Jangod. All Rights Reserved
 请遵守代码管理规范，禁止将代码泄漏到github等公网上。
 :::
 
-## 一句话介绍
+## 系统简介
 
   本项目依据xx文件、xx政策，为进一步提升xx能力；计划依托xx契机，结合xx资源，通过xx手段，实现xx目标；进而解决了xx问题，提供了xx支撑，完成了xx优化。
+
+## 系统结构
+
+![系统结构](./images/todo.png)
+
+
+## 数据流转
+
+![数据流图](./images/todo.png)
 
 ## 备注说明
 
