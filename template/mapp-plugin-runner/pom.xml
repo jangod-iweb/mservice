@@ -11,11 +11,14 @@
 
     <artifactId>{{name}}-runner</artifactId>
     <packaging>jar</packaging>
-    <properties>
-        <sso-bsp-version>3.1.2</sso-bsp-version>
-    </properties>
 
     <dependencies>
+        <dependency>
+            <artifactId>csp-common-container</artifactId>
+            <groupId>org.jangod.csp-frame</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.jangod.iweb</groupId>
             <artifactId>jangod-iweb-mapp-starter</artifactId>
@@ -43,8 +46,18 @@
         </dependency>
         <!-- 数据库连接池结束 -->
 
-        <!-- 额外第三方插件开始  -->
-        <!-- 额外第三方插件结束  -->
+        <!-- 插件共享依赖开始  -->
+        <dependency>
+            <groupId>org.jangod.csp-platform</groupId>
+            <artifactId>csp-api-bsp</artifactId>
+            <version>1.4-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jangod.csp-platform</groupId>
+            <artifactId>csp-api-rc</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- 插件共享依赖结束  -->
     </dependencies>
     <build>
         <finalName>${artifactId}</finalName>

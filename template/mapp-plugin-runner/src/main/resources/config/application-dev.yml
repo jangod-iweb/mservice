@@ -1,3 +1,10 @@
+
+container:
+  auto: false
+  ip:
+  code:
+  token:
+
 plugin:
   # 运行项目时的模式。分为开发环境(dev)、生产环境(prod)
   runMode: dev
@@ -7,6 +14,12 @@ plugin:
   pluginConfigFilePath: ./pluginFile
 
 spring:
+  # 服务发现
+  cloud:
+    nacos:
+      discovery:
+        register-enabled: false
+  # 数据源配追
   datasource:
     dynamic:
       configClz: org.jangod.iweb.mapp.config.DataSourceConfig
@@ -23,14 +36,22 @@ spring:
           username: demo
           password: '123456a?'
 
-#app:
-#  l1ClassName: org.jangod.iweb.plugin.cache.redis.RedisCacheProvider
-#  redis:
-#    host: 127.0.0.1
-#    port: 6379
-#    database: 9
-#    password: ''
-#    minIdle: 5
-#    maxTotal: 20
-#    maxIdle: 10
-#    maxWaitMillis: 10000
+app:
+  l1ClassName: org.jangod.iweb.plugin.cache.redis.RedisCacheProvider
+  redis:
+    host: {{redisAddr}}
+    port: {{redisPort}}
+    database: {{redisDatabase}}
+    password: '{{redisPassword}}'
+    minIdle: 5
+    maxTotal: 20
+    maxIdle: 10
+    maxWaitMillis: 10000
+
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 10000

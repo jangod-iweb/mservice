@@ -117,6 +117,30 @@ module.exports = {
       "message": "nacos命名空间",
       "default": "nacosnamespace"
     },
+    "redisAddr": {
+      "type": "string",
+      "required": true,
+      "message": "redis地址",
+      "default": "127.0.0.1"
+    },
+    "redisPort": {
+      "type": "int",
+      "required": true,
+      "message": "redis端口号",
+      "default": 6379
+    },
+    "redisDatabase": {
+      "type": "int",
+      "required": true,
+      "message": "redis库号",
+      "default": 9
+    },
+    "redisPassword": {
+      "type": "int",
+      "required": true,
+      "message": "redis密码",
+      "default": ""
+    },
     "isWeb": {
       "type": "confirm",
       "required": true,
@@ -151,6 +175,13 @@ module.exports = {
   helpers: {
     firstToUpper(str) {
       return formatFirstToUpper(str);
+    },
+    if_true(value1, value2, options){
+      if(value1 && value2){
+        return options.fn(this);
+      }else{
+        return options.inverse(this);
+      }
     }
   },
   "metalsmith": {

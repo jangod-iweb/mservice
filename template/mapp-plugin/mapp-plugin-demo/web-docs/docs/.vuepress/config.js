@@ -46,13 +46,13 @@ module.exports = {
                     ]
                 }
             ],
-            "/guide/": [
+            "/guide/deploy/": [
                 {
                     title: '部署手册',   // 必要的
                     collapsable: false, // 可选的, 默认值是 true,
                     sidebarDepth: 1,    // 可选的, 默认值是 1
                     children: [
-                        "runner部署", "容器部署"
+                        "runner", "container"
                     ]
                 }
             ],
@@ -61,9 +61,6 @@ module.exports = {
                     title: '操作手册',   // 必要的
                     collapsable: true, // 可选的, 默认值是 true,
                     sidebarDepth: 2,    // 可选的, 默认值是 1
-                    children: [
-                        'opera'
-                    ]
                 }
             ]
         }

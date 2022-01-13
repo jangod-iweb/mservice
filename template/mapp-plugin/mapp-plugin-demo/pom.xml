@@ -18,18 +18,16 @@
         </dependency>
         <dependency>
             <groupId>org.jangod.iweb</groupId>
+            <artifactId>jangod-iweb-db</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jangod.iweb</groupId>
             <artifactId>jangod-iweb-mapp</artifactId>
             <scope>provided</scope>
         </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.47</version>
-            <scope>test</scope>
-        </dependency>
-
         <!-- Jangod框架相关结束-->
+
         <dependency>
             <groupId>{{packageName}}</groupId>
             <artifactId>{{name}}-api-{{pluginName}}</artifactId>
@@ -47,40 +45,10 @@
         </dependency>
         <!-- 接口相关结束 -->
     </dependencies>
+
     <build>
+        {{#if_true isWeb isWebDocs}}
         <plugins>
-            <!-- 将依赖模块的jar包文件提取出来放到指定位置 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>unpack</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>{{packageName}}</groupId>
-                                    <artifactId>{{name}}-api-{{pluginName}}</artifactId>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>org.jangod.csp-platform</groupId>
-                                    <artifactId>csp-api-bsp</artifactId>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>org.jangod.csp-platform</groupId>
-                                    <artifactId>csp-api-rc</artifactId>
-                                </artifactItem>
-                            </artifactItems>
-                            <includes>**/*.class</includes>
-                            <outputDirectory>${project.build.directory}/classes</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
@@ -100,10 +68,11 @@
                             <followSymlinks>false</followSymlinks>
                         </fileset>
                     </filesets>
-                    <skip>${web-build.skip}</skip>
+                    <skip>${buildWebSkip}</skip>
                     <failOnError>false</failOnError>
                 </configuration>
             </plugin>
+            {{#if_eq isWeb true}}
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
@@ -123,17 +92,19 @@
                             <followSymlinks>false</followSymlinks>
                         </fileset>
                     </filesets>
-                    <skip>${web-build.skip}</skip>
+                    <skip>${buildWebSkip}</skip>
                     <failOnError>false</failOnError>
                 </configuration>
             </plugin>
+            {{/if_eq}}
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
-                    <skip>${web-build.skip}</skip>
+                    <skip>${buildWebSkip}</skip>
                 </configuration>
                 <executions>
+                    {{#if_eq isWeb true}}
                     <execution>
                         <id>exec-npm-install</id>
                         <phase>generate-resources</phase>
@@ -163,6 +134,8 @@
                             <workingDirectory>${basedir}/web</workingDirectory>
                         </configuration>
                     </execution>
+                    {{/if_eq}}
+                    {{#if_eq isWebDocs true}}
                     <execution>
                         <id>exec1-npm-install</id>
                         <phase>generate-resources</phase>
@@ -192,11 +165,16 @@
                             <workingDirectory>${basedir}/web-docs</workingDirectory>
                         </configuration>
                     </execution>
+                    {{/if_eq}}
                 </executions>
             </plugin>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <skip>${buildWebSkip}</skip>
+                </configuration>
                 <executions>
+                    {{#if_eq isWeb true}}
                     <execution>
                         <id>copy-web</id>
                         <phase>process-resources</phase>
@@ -215,6 +193,8 @@
                             </resources>
                         </configuration>
                     </execution>
+                    {{/if_eq}}
+                    {{#if_eq isWebDocs true}}
                     <execution>
                         <id>copy-web-docs</id>
                         <phase>process-resources</phase>
@@ -233,8 +213,10 @@
                             </resources>
                         </configuration>
                     </execution>
+                    {{/if_eq}}
                 </executions>
             </plugin>
         </plugins>
+        {{/if_true}}
     </build>
 </project>
