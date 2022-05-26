@@ -6,6 +6,6 @@ import org.jangod.iweb.mapp.config.MappMpAndResourceConfig;
 
 @Data
 @ConfigDefinition(fileName="{{name}}-plugin-{{pluginName}}.yml")
-public class MappDemoProperties extends MappMpAndResourceConfig {
+public class PluginConfig extends MappMpAndResourceConfig {
     private String dsId;
 }
