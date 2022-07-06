@@ -11,7 +11,7 @@
         <module>{{name}}-api-{{pluginName}}</module>
     </modules>
     <properties>
-        <jangod.iweb.version>4.0.7-SNAPSHOT</jangod.iweb.version>
+        <jangod.iweb.version>4.0.8-SNAPSHOT</jangod.iweb.version>
         <iweb.repository>http://mmcs.jangod.org:8081/nexus_iweb</iweb.repository>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

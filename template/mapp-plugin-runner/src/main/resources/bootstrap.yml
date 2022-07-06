@@ -16,6 +16,7 @@ app:
     username: {{nacosUsername}}
     password: '{{nacosPassword}}'
     namespace: '{{nacosNamespace}}'
+
 spring:
   application:
     # 应用名称

@@ -20,11 +20,11 @@ function formatFileName(originFileName,prompts){
   const pluginName = prompts.pluginName;
   const cOriginPluginName = formatFirstToUpper(originPluginName);
   const cPluginName = formatFirstToUpper(pluginName);
- 
+
   if(fileName.indexOf(`${originPackagePath}/`)>-1){
     fileName = fileName.replace(`${originPackagePath}/`,`${packagePath}/`);
   }
-  
+
   if(fileName.indexOf(`${originName}-plugin-runner/`)==0){
     fileName = fileName.replace(`${originName}-plugin-runner/`,`${name}-runner/`);
 
@@ -140,6 +140,29 @@ module.exports = {
       "required": true,
       "message": "redis密码",
       "default": ""
+    },
+    "mqttAddr": {
+      "type": "string",
+      "required": true,
+      "message": "mqtt链接地址",
+      "default": "ws://203.175.130.170:8083/mqtt"
+    },
+    "mqttUsername": {
+      "type": "string",
+      "required": true,
+      "message": "mqtt用户名",
+      "default": ""
+    },
+    "mqttPassword": {
+      "type": "string",
+      "required": true,
+      "message": "mqtt密码",
+      "default": ""
+    },"mqttPassword": {
+      "type": "string",
+      "required": true,
+      "message": "mqtt客户端id，以应用为单位，不可重复",
+      "default": "client_xxx_runner_01"
     },
     "isWeb": {
       "type": "confirm",
