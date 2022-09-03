@@ -32,7 +32,7 @@ module.exports = {
             .set('@_src',resolve('src'));
         config.plugin('runtime')
             .use(RuntimePublicPathPlugin,[{
-                runtimePublicPath: '__iweb_context_path'
+                runtimePublicPath: '__iweb_public_path || __iweb_context_path'
             }]);
         config.plugin('html')
             .tap(options => {
