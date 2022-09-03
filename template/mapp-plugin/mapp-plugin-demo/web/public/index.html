@@ -9,14 +9,15 @@
   <meta http-equiv="Expires" content="0" />
   <title>项目名称</title>
   <script type="text/javascript">
-      (function(){window.__iweb_context_path="";window.__iweb_preview="0";var pathname=window.location.pathname;var arrPathname=pathname.split("/");if(arrPathname.length>3&&(arrPathname[1]=="t"||arrPathname[1]=="tp"||arrPathname[1]=="p")){window.__iweb_context_path="/"+arrPathname[1]+"/"+arrPathname[2]+"/";if(arrPathname[1]==="tp"){window.__iweb_preview="1"}}else{window.__iweb_context_path="<%=webpackConfig.output.publicPath %>"}})();
+      (function(){window.__iweb_context_path="";window.__iweb_preview="0";var pathname=window.location.pathname;var arrPathname=pathname.split("/");if(arrPathname.length>=3&&(arrPathname[1]=="t"||arrPathname[1]=="tp"||arrPathname[1]=="p")){window.__iweb_context_path="/"+arrPathname[1]+"/"+arrPathname[2]+"/";if(arrPathname[1]==="tp"){window.__iweb_preview="1"}}else{window.__iweb_context_path="<%=webpackConfig.output.publicPath %>"}})();
+      (function(){if(!window.__iweb_public_path){window.__iweb_public_path="";return}var xmlhttp=null;if(window.XMLHttpRequest){xmlhttp=new XMLHttpRequest()}else if(window.ActiveXObject){xmlhttp=new ActiveXObject("Microsoft.XMLHTTP")}if(xmlhttp==null){console.log("get_error:","您的浏览器不支持XMLHttp")}else{xmlhttp.onreadystatechange=function(){if(xmlhttp.readyState==4){if(xmlhttp.status==200){try{window.__iweb_config=JSON.parse(xmlhttp.responseText)}catch(e){console.log("format_error:",e)}}else{console.log("get_error:",xmlhttp)}}};xmlhttp.open("GET",window.__iweb_public_path+"version.json?t="+new Date().getTime(),false);xmlhttp.send(null)}})();
   </script>
 </head>
 <body>
   <div id="app"></div>
   <script type="text/javascript">
       (function(){
-          eval(function(p,a,c,k,e,r){e=function(c){return c.toString(36)};if('0'.replace(0,e)==0){while(c--)r[e(c)]=k[c];k=[function(e){return r[e]||e}];e=function(){return'[1-9a-e]'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('window.dynamicLoading={8:9(4,5){6 1=7.a(\'1\')[0];6 2=7.b(\'2\');2.href=5+4;2.rel=\'stylesheet\';2.c=\'d/8\';1.e(2)},js:9(4,5){6 1=7.a(\'1\')[0];6 3=7.b(\'3\');3.4=5+4;3.c=\'d/javascript\';3.crossorigin="anonymous";1.e(3)}}',[],15,'|head|link|script|src|path|var|document|css|function|getElementsByTagName|createElement|type|text|appendChild'.split('|'),0,{}))
+          eval(function(p,a,c,k,e,r){e=function(c){return c.toString(36)};if('0'.replace(0,e)==0){while(c--)r[e(c)]=k[c];k=[function(e){return r[e]||e}];e=function(){return'[1-9a-l]'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('2.dynamicLoading={a:b(1,3){c(2.7){3=2.7;1=1.d(/(?=[^-]*$).*(?=.a)/,2.e.f)}8 4=9.g(\'4\')[0];8 5=9.h(\'5\');5.href=3+1;5.rel=\'stylesheet\';5.i=\'j/a\';4.k(5)},l:b(1,3){c(2.7){3=2.7;1=1.d(/(?=[^-]*$).*(?=.l)/,2.e.f)}8 4=9.g(\'4\')[0];8 6=9.h(\'6\');6.1=3+1;6.i=\'j/javascript\';6.crossorigin="anonymous";4.k(6)}}',[],22,'|src|window|path|head|link|script|__iweb_public_path|var|document|css|function|if|replace|__iweb_config|version|getElementsByTagName|createElement|type|text|appendChild|js'.split('|'),0,{}));
           <% for (var css in htmlWebpackPlugin.files.css) { %>dynamicLoading.css("<%=htmlWebpackPlugin.files.css[css] %>","<%=webpackConfig.output.publicPath %>"?"":window.__iweb_context_path);<% } %><% for (var js in htmlWebpackPlugin.files.js) { %>dynamicLoading.js("<%=htmlWebpackPlugin.files.js[js] %>","<%=webpackConfig.output.publicPath %>"?"":window.__iweb_context_path);<% } %>
       })();
   </script>
