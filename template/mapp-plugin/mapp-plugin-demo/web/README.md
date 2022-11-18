@@ -6,7 +6,7 @@
 
 **2.安装cnpm `npm install -g cnpm`**
 
-**3.切换到私有仓库`cnpm config set registry http://39.108.236.82:7001`**
+**3.切换到私有仓库`cnpm config set registry http://117.73.3.108:7001/`**
 
 **4.`cnpm install`**
 
