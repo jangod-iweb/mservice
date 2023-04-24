@@ -13,47 +13,52 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- 容器依赖start -->
+        <!-- Jangod框架开始 -->
         <dependency>
-            <artifactId>csp-common-container</artifactId>
-            <groupId>org.jangod.csp-frame</groupId>
-            <version>1.1-SNAPSHOT</version>
+            <groupId>org.jangod.iweb</groupId>
+            <artifactId>jangod-iweb-mapp</artifactId>
+            <version>${jangod.iweb.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.paho</groupId>
-            <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
-            <version>1.2.5</version>
-        </dependency>
-        <!-- 容器依赖end -->
-
         <dependency>
             <groupId>org.jangod.iweb</groupId>
             <artifactId>jangod-iweb-mapp-starter</artifactId>
+            <version>${jangod.iweb.version}</version>
         </dependency>
-
         <dependency>
-            <groupId>org.jangod.csp-frame</groupId>
-            <artifactId>csp-common-sso-uaa</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.jangod.iweb</groupId>
+            <artifactId>jangod-iweb-cache</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>hutool-all</artifactId>
+                    <groupId>cn.hutool</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
+        <!--数据库相关开始-->
 
-        <!-- 缓存扩展程序开始 -->
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.9.0</version>
-        </dependency>
-        <!-- 缓存扩展程序结束 -->
-
-        <!-- 数据库连接池开始 -->
+        <!--数据库相关开始-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.47</version>
         </dependency>
-        <!-- 数据库连接池结束 -->
+        <!--数据库相关结束-->
+
+        <!-- 缓存扩展程序开始 -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>3.6.3</version>
+        </dependency>
+        <!-- 缓存扩展程序结束 -->
+
 
         <!-- 插件共享依赖开始  -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.7.18</version>
+        </dependency>
         <dependency>
             <groupId>org.jangod.csp-platform</groupId>
             <artifactId>csp-api-bsp</artifactId>
@@ -69,49 +74,83 @@
     <build>
         <finalName>${artifactId}</finalName>
         <plugins>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                <version>3.2.0</version>-->
+<!--                <configuration>-->
+<!--                    <archive>-->
+<!--                        <manifest>-->
+<!--                            <useUniqueVersions>false</useUniqueVersions>-->
+<!--                            <mainClass>org.jangod.noah.runner.StartupApplication</mainClass>-->
+<!--                            <addClasspath>false</addClasspath>-->
+<!--                        </manifest>-->
+<!--                    </archive>-->
+<!--                    <excludes>-->
+<!--                        <exclude>static/**</exclude>-->
+<!--                        <exclude>/**.yml</exclude>-->
+<!--                        <exclude>/**.properties</exclude>-->
+<!--                        <exclude>/**.xml</exclude>-->
+<!--                        <exclude>/config/**</exclude>-->
+<!--                        <exclude>/dubbo/**</exclude>-->
+<!--                        <exclude>mysql:mysql-connector-java</exclude>-->
+<!--                    </excludes>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-assembly-plugin</artifactId>-->
+<!--                <version>3.3.0</version>-->
+<!--                <configuration>-->
+<!--                    <appendAssemblyId>false</appendAssemblyId>-->
+<!--                    <descriptors>-->
+<!--                        <descriptor>src/main/build/package.xml</descriptor>-->
+<!--                    </descriptors>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>make-assembly</id>-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>single</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <useUniqueVersions>false</useUniqueVersions>
-                            <mainClass>{{packageName}}.{{#firstToUpper name}}{{/firstToUpper}}RunnerApplication</mainClass>
-                            <addClasspath>false</addClasspath>
-                        </manifest>
-                    </archive>
-                    <excludes>
-                        <exclude>static/**</exclude>
-                        <exclude>/**.yml</exclude>
-                        <exclude>/**.properties</exclude>
-                        <exclude>/license</exclude>
-                        <exclude>/**.xml</exclude>
-                        <exclude>/config/**</exclude>
-                        <exclude>/dubbo/**</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.3.0</version>
-                <configuration>
-                    <appendAssemblyId>false</appendAssemblyId>
-                    <descriptors>
-                        <descriptor>src/main/build/package.xml</descriptor>
-                    </descriptors>
-                </configuration>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.7.3</version>
                 <executions>
                     <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
                         <goals>
-                            <goal>single</goal>
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!--先排除所有的配置文件-->
+                <excludes>
+                    <exclude>config/application-*.yml</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <!-- 定义了变量配置文件的地址 -->
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/**.xml</include>
+                    <include>bootstrap.yml</include>
+                    <include>config/application-${environment}.yml</include>
+                </includes>
+                <!-- 一定要设置成true -->
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
     </build>
 </project>

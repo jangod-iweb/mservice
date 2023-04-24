@@ -141,29 +141,6 @@ module.exports = {
       "message": "redis密码",
       "default": ""
     },
-    "mqttAddr": {
-      "type": "string",
-      "required": true,
-      "message": "mqtt链接地址",
-      "default": "ws://203.175.130.170:8083/mqtt"
-    },
-    "mqttUsername": {
-      "type": "string",
-      "required": true,
-      "message": "mqtt用户名",
-      "default": ""
-    },
-    "mqttPassword": {
-      "type": "string",
-      "required": true,
-      "message": "mqtt密码",
-      "default": ""
-    },"mqttPassword": {
-      "type": "string",
-      "required": true,
-      "message": "mqtt客户端id，以应用为单位，不可重复",
-      "default": "client_xxx_runner_01"
-    },
     "isWeb": {
       "type": "confirm",
       "required": true,

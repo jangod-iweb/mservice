@@ -1,4 +1,4 @@
-package com.inspur.csp.ds.config;
+package {{packageName}}.{{pluginName}}.config;
 
 import org.jangod.iweb.mapp.config.MappTransactionConfig;
 import org.springframework.context.annotation.Configuration;

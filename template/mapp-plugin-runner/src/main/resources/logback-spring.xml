@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <springProperty name="FILE_NAME" source="spring.application.name"/>
+    <property name="FILE_DIRECTORY" value="logs"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <file>${FILE_DIRECTORY}/${FILE_NAME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${FILE_DIRECTORY}/${FILE_NAME}.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <!--日志文件保留天数-->
+            <MaxHistory>7</MaxHistory>
+            <!--给定日志文件大小，超过指定的大小就新建一个日志文件-->
+            <maxFileSize>30MB</maxFileSize>
+            <!-- 日志上限大小 -->
+            <TotalSizeCap>120MB</TotalSizeCap>
+        </rollingPolicy>
+    </appender>
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <file>${FILE_DIRECTORY}/${FILE_NAME}_error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${FILE_DIRECTORY}/${FILE_NAME}.%d{yyyy-MM-dd}_error.%i.log</FileNamePattern>
+            <!--日志文件保留天数-->
+            <MaxHistory>7</MaxHistory>
+            <!--给定日志文件大小，超过指定的大小就新建一个日志文件-->
+            <MaxFileSize>30MB</MaxFileSize>
+            <!-- 日志上限大小 -->
+            <TotalSizeCap>120MB</TotalSizeCap>
+        </rollingPolicy>
+    </appender>
+    <appender name="SQL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <file>${FILE_DIRECTORY}/${FILE_NAME}_sql.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${FILE_DIRECTORY}/${FILE_NAME}_sql.%d{yyyy-MM-dd}_sql.%i.log</FileNamePattern>
+            <!--日志文件保留天数-->
+            <MaxHistory>7</MaxHistory>
+            <!--给定日志文件大小，超过指定的大小就新建一个日志文件-->
+            <MaxFileSize>30MB</MaxFileSize>
+            <!-- 日志上限大小 -->
+            <TotalSizeCap>120MB</TotalSizeCap>
+        </rollingPolicy>
+    </appender>
+    <logger name="org.springframework" additivity="false" Level="error"><appender-ref ref="CONSOLE"/><appender-ref ref="ERROR"/></logger>
+    <logger name="com.alibaba.druid" additivity="false" Level="error"><appender-ref ref="CONSOLE"/><appender-ref ref="ERROR"/></logger>
+    <logger name="com.gitee.starblues" additivity="false" Level="error"><appender-ref ref="CONSOLE"/><appender-ref ref="ERROR"/></logger>
+    <logger name="com.baomidou.mybatisplus" additivity="false"  level="error">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ERROR"/>
+    </logger>
+    <logger name="org.jangod.iweb" additivity="false" level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </logger>
+    <logger name="org.jangod.iweb.logging.Slf4jImpl" additivity="false" level="debug">
+        <appender-ref ref="SQL"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>

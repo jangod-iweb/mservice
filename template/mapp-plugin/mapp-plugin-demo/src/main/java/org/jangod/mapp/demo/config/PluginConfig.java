@@ -1,4 +1,4 @@
-package {{packageName}}.{{pluginName}}.properties;
+package {{packageName}}.{{pluginName}}.config;
 
 import com.gitee.starblues.annotation.ConfigDefinition;
 import lombok.Data;

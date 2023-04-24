@@ -3,29 +3,40 @@ server:
   servlet:
     context-path:
 
+logging:
+  config: classpath:logback-spring.xml
+
 # 应用相关配置
 app:
+
   # 工作Id，集群模式中指定防止id生成重复
   workId: 1
+  # 应用编码
   code: {{name}}-runner
+  # 应用名称
   title: {{name}}-RUNNER
   # 基于网关的鉴权token
   cloudToken: 791685057029865473
+
+  # nacos
   nacos:
-    server-addr: {{nacosAddr}}
-    username: {{nacosUsername}}
-    password: '{{nacosPassword}}'
-    namespace: '{{nacosNamespace}}'
+    server-addr: ${nacos.url}
+    username: ${nacos.username}
+    password: ${nacos.password}
+    namespace: ${nacos.namespace}
+    # 是否向nacos注册服务
+    regist: ${nacos.serving}
 
 spring:
   application:
     # 应用名称
     name: ${app.code}
   profiles:
-    active: dev
+    active: ${environment}
   cloud:
     nacos:
       discovery:
+        ip: ${app.ip}
         server-addr: ${app.nacos.server-addr}
         username:  ${app.nacos.username}
         password: ${app.nacos.password}

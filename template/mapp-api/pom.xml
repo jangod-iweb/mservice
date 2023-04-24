@@ -11,7 +11,7 @@
         <module>{{name}}-api-{{pluginName}}</module>
     </modules>
     <properties>
-        <jangod.iweb.version>4.0.8-SNAPSHOT</jangod.iweb.version>
+        <jangod.iweb.version>4.0.13-SNAPSHOT</jangod.iweb.version>
         <iweb.repository>http://mmcs.jangod.org:8081/nexus_iweb</iweb.repository>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -20,20 +20,32 @@
     </properties>
     <profiles>
         <profile>
-            <id>1开发模式</id>
+            <id>1、打包配置</id>
+            <properties>
+                <!-- 开发模式 -->
+                <buildWebSkip>false</buildWebSkip>
+                <autoPluginVersion>true</autoPluginVersion>
+                <!-- 环境参数 -->
+                <environment>prod</environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>开发环境</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
+                <!-- 开发模式 -->
                 <buildWebSkip>true</buildWebSkip>
                 <autoPluginVersion>false</autoPluginVersion>
-            </properties>
-        </profile>
-        <profile>
-            <id>2发布模式</id>
-            <properties>
-                <buildWebSkip>false</buildWebSkip>
-                <autoPluginVersion>true</autoPluginVersion>
+                <!-- 环境参数 -->
+                <environment>dev</environment>
+                <app.ip>127.0.0.1</app.ip>
+                <nacos.url>{{nacosAddr}}</nacos.url>
+                <nacos.username>{{nacosUsername}}</nacos.username>
+                <nacos.password>'{{nacosPassword}}'</nacos.password>
+                <nacos.namespace>'{{nacosNamespace}}'</nacos.namespace>
+                <nacos.serving>false</nacos.serving>
             </properties>
         </profile>
     </profiles>

@@ -10,10 +10,21 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>{{name}}-plugin-{{pluginName}}</artifactId>
     <dependencies>
-        <!-- Jangod框架相关开始-->
+        <!-- jangod相关start -->
         <dependency>
             <groupId>org.jangod.iweb</groupId>
             <artifactId>jangod-iweb-core</artifactId>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>hutool-all</artifactId>
+                    <groupId>cn.hutool</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.jangod.iweb</groupId>
+            <artifactId>jangod-iweb-mapp</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -23,10 +34,10 @@
         </dependency>
         <dependency>
             <groupId>org.jangod.iweb</groupId>
-            <artifactId>jangod-iweb-mapp</artifactId>
+            <artifactId>jangod-iweb-cache</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- Jangod框架相关结束-->
+        <!-- jangod相关end -->
 
         <dependency>
             <groupId>{{packageName}}</groupId>
@@ -63,12 +74,21 @@
                         <fileset>
                             <directory>${basedir}/web</directory>
                             <includes>
-                                <include>dist/**/*</include>
+                                <include>dist/</include>
+                                <include>target/</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>${basedir}/web-docs</directory>
+                            <includes>
+                                <include>dist/</include>
+                                <include>target/</include>
                             </includes>
                             <followSymlinks>false</followSymlinks>
                         </fileset>
                     </filesets>
-                    <skip>${buildWebSkip}</skip>
+                    <skip>false</skip>
                     <failOnError>false</failOnError>
                 </configuration>
             </plugin>

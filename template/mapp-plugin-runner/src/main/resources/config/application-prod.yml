@@ -42,14 +42,3 @@ app:
     maxTotal: 20
     maxIdle: 10
     maxWaitMillis: 10000
-
-
-# mqtt配置
-mqtt:
-  broker: {{mqttAddr}}
-  userName: {{mqttUsername}}
-  passWord: {{mqttPassword}}
-  qos: 2
-  connectionTimeout: 10
-  keepAliveInterval: 20
-  clientId: {{mqttClientId}}
