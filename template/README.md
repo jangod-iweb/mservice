@@ -2,10 +2,6 @@
 
 > 假设`{{name}}`为项目名称,`{{pluginName}}`为`{{name}}`项目中的一个业务模块
 
-## 开发必读
-
-    http://developers.iszgov.cn/iweb/
-
 ## 开发环境
 
     jdk（ version >= 1.8 ）
