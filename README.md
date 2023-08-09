@@ -2,11 +2,6 @@
 
 `mservice`是基于`jangod iweb`实现集成springcloud项目，用于开发插件式应用的集成框架。
 
-
-## 开发必读
-
-    http://developers.iszgov.cn/iweb/
-
 ## 开发环境
 
     jdk（ version >= 1.8 ）
