@@ -17,50 +17,40 @@ module.exports = {
     themeConfig: {
         logo: "/assets/images/iweb-logo-text.png",
         nav: [
-            {
-                text: '插件能力',
-                link: '/'
-            },
-            {
-                text: '快速接入',
-                link: '/integration/'
-            },
-            {
-                text: '部署手册',
-                items: [
-                    {text: 'runner部署', link: '/guide/deploy/runner.md'},
-                    {text: '容器部署', link: '/guide/deploy/container.md'}
-                ]
-            },
-            {text: '操作手册', link: '/opera/'},
+            {text: '资源中心', link: '/resource/'},
+            {text: '指引文档', link: '/guide/'},
             {text: '常见问题', link: '/faq/'},
         ],
         sidebar: {
-            "/integration": [
+            '/resource/': [
                 {
-                    title: '接入规范',   // 必要的
+                    title: '资源中心',   // 必要的
                     collapsable: true, // 可选的, 默认值是 true,
                     sidebarDepth: 2,    // 可选的, 默认值是 1
                     children: [
-                        // 对接参与角色、系统
+                        // {path:"/resource/demo1/",title:"资源1"},
                     ]
                 }
             ],
-            "/guide/deploy/": [
+            "/guide/": [
                 {
-                    title: '部署手册',   // 必要的
+                    title: '插件说明',   // 必要的
                     collapsable: false, // 可选的, 默认值是 true,
                     sidebarDepth: 1,    // 可选的, 默认值是 1
                     children: [
-                        "runner", "container"
+                        {path:"/guide/quickstart/",title:"快速入门"},
+                        {path:"/guide/config/",title:"插件配置"},
                     ]
                 }
             ],
-            '/opera/': [
+            '/faq/': [
                 {
-                    title: '操作手册',   // 必要的
+                    title: '常见问题',   // 必要的
                     collapsable: true, // 可选的, 默认值是 true,
                     sidebarDepth: 2,    // 可选的, 默认值是 1
+                    children: [
+                        // {path:"/faq/demo1/",title:"问题1"},
+                    ]
                 }
             ]
         }

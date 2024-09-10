@@ -14,13 +14,6 @@
         <dependency>
             <groupId>org.jangod.iweb</groupId>
             <artifactId>jangod-iweb-core</artifactId>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>hutool-all</artifactId>
-                    <groupId>cn.hutool</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.jangod.iweb</groupId>
@@ -40,19 +33,12 @@
         <!-- jangod相关end -->
 
         <dependency>
-            <groupId>{{packageName}}</groupId>
-            <artifactId>{{name}}-api-{{pluginName}}</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.jangod.csp-platform</groupId>
             <artifactId>csp-api-bsp</artifactId>
-            <version>1.4-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.jangod.csp-platform</groupId>
             <artifactId>csp-api-rc</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- 接口相关结束 -->
     </dependencies>
@@ -60,6 +46,34 @@
     <build>
         {{#if_true isWeb isWebDocs}}
         <plugins>
+            <!-- 将依赖模块的jar包文件提取出来放到指定位置 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.jangod.csp-platform</groupId>
+                                    <artifactId>csp-api-bsp</artifactId>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.jangod.csp-platform</groupId>
+                                    <artifactId>csp-api-rc</artifactId>
+                                </artifactItem>
+                            </artifactItems>
+                            <includes>**/*.class</includes>
+                            <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
@@ -79,6 +93,7 @@
                             </includes>
                             <followSymlinks>false</followSymlinks>
                         </fileset>
+                        {{#if_eq isWeb true}}
                         <fileset>
                             <directory>${basedir}/web-docs</directory>
                             <includes>
@@ -87,36 +102,12 @@
                             </includes>
                             <followSymlinks>false</followSymlinks>
                         </fileset>
+                        {{/if_eq}}
                     </filesets>
                     <skip>false</skip>
                     <failOnError>false</failOnError>
                 </configuration>
             </plugin>
-            {{#if_eq isWeb true}}
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>clean-web-docs-dist</id>
-                        <phase>initialize</phase>
-                    </execution>
-                </executions>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>${basedir}/web-docs</directory>
-                            <includes>
-                                <include>dist/**/*</include>
-                            </includes>
-                            <followSymlinks>false</followSymlinks>
-                        </fileset>
-                    </filesets>
-                    <skip>${buildWebSkip}</skip>
-                    <failOnError>false</failOnError>
-                </configuration>
-            </plugin>
-            {{/if_eq}}
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>

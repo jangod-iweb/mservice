@@ -17,24 +17,19 @@
         <dependency>
             <groupId>org.jangod.iweb</groupId>
             <artifactId>jangod-iweb-mapp</artifactId>
-            <version>${jangod.iweb.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jangod.iweb</groupId>
             <artifactId>jangod-iweb-mapp-starter</artifactId>
-            <version>${jangod.iweb.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jangod.iweb</groupId>
             <artifactId>jangod-iweb-cache</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>hutool-all</artifactId>
-                    <groupId>cn.hutool</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
-        <!--数据库相关开始-->
+        <dependency>
+            <groupId>org.jangod.csp-platform</groupId>
+            <artifactId>csp-common-sso-uaa</artifactId>
+        </dependency>
 
         <!--数据库相关开始-->
         <dependency>
@@ -72,85 +67,42 @@
         <!-- 插件共享依赖结束  -->
     </dependencies>
     <build>
-        <finalName>${artifactId}</finalName>
-        <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-jar-plugin</artifactId>-->
-<!--                <version>3.2.0</version>-->
-<!--                <configuration>-->
-<!--                    <archive>-->
-<!--                        <manifest>-->
-<!--                            <useUniqueVersions>false</useUniqueVersions>-->
-<!--                            <mainClass>org.jangod.noah.runner.StartupApplication</mainClass>-->
-<!--                            <addClasspath>false</addClasspath>-->
-<!--                        </manifest>-->
-<!--                    </archive>-->
-<!--                    <excludes>-->
-<!--                        <exclude>static/**</exclude>-->
-<!--                        <exclude>/**.yml</exclude>-->
-<!--                        <exclude>/**.properties</exclude>-->
-<!--                        <exclude>/**.xml</exclude>-->
-<!--                        <exclude>/config/**</exclude>-->
-<!--                        <exclude>/dubbo/**</exclude>-->
-<!--                        <exclude>mysql:mysql-connector-java</exclude>-->
-<!--                    </excludes>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-assembly-plugin</artifactId>-->
-<!--                <version>3.3.0</version>-->
-<!--                <configuration>-->
-<!--                    <appendAssemblyId>false</appendAssemblyId>-->
-<!--                    <descriptors>-->
-<!--                        <descriptor>src/main/build/package.xml</descriptor>-->
-<!--                    </descriptors>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>make-assembly</id>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>single</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.7.3</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-
+        <finalName>${project.artifactId}</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <!--先排除所有的配置文件-->
-                <excludes>
-                    <exclude>config/application-*.yml</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <!-- 定义了变量配置文件的地址 -->
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/**.xml</include>
-                    <include>bootstrap.yml</include>
-                    <include>config/application-${environment}.yml</include>
-                </includes>
-                <!-- 一定要设置成true -->
+                <!--为true时配置文件才会变量自动替换-->
                 <filtering>true</filtering>
             </resource>
         </resources>
-
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <useUniqueVersions>false</useUniqueVersions>
+                            <mainClass>{{packageName}}.{{#firstToUpper name}}{{/firstToUpper}}RunnerApplication</mainClass>
+                            <addClasspath>false</addClasspath>
+                        </manifest>
+                    </archive>
+                    <excludes>
+                        <exclude>license</exclude>
+                        <exclude>static/**</exclude>
+                        <exclude>**.yml</exclude>
+                        <exclude>**.properties</exclude>
+                        <exclude>dubbo/**</exclude>
+                        <exclude>**.xml</exclude>
+                        <exclude>config/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+            </plugin>
+        </plugins>
     </build>
 </project>

@@ -61,6 +61,20 @@ function formatFileName(originFileName,prompts){
       fileName = fileName.replace(`${packagePath}/${originPluginName}/`,`${packagePath}/${pluginName}/`)
     }
   }
+  else if(fileName.indexOf(`${originName}-common/`)==0){
+    fileName = fileName.replace(`${originName}-common/`,`${name}-common/`)
+
+    if(fileName.indexOf(`${packagePath}/${originPluginName}/`)>-1){
+      fileName = fileName.replace(`${packagePath}/${originPluginName}/`,`${packagePath}/${pluginName}/`)
+    }
+  }
+  else if(fileName.indexOf(`${originName}-parent/`)==0){
+    fileName = fileName.replace(`${originName}-parent/`,`${name}-parent/`)
+
+    if(fileName.indexOf(`${packagePath}/${originPluginName}/`)>-1){
+      fileName = fileName.replace(`${packagePath}/${originPluginName}/`,`${packagePath}/${pluginName}/`)
+    }
+  }
 
 
   return fileName;
@@ -128,12 +142,6 @@ module.exports = {
       "required": true,
       "message": "redis端口号",
       "default": 6379
-    },
-    "redisDatabase": {
-      "type": "int",
-      "required": true,
-      "message": "redis库号",
-      "default": 9
     },
     "redisPassword": {
       "type": "int",

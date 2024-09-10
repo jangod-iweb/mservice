@@ -9,7 +9,6 @@ import org.apache.commons.lang.StringUtils;
 import {{packageName}}.{{pluginName}}.bean.PubNews;
 import {{packageName}}.{{pluginName}}.bean.PubNewsType;
 import {{packageName}}.{{pluginName}}.bean.vo.PubNewsTypeVO;
-import {{packageName}}.{{pluginName}}.manager.PubNewsManager;
 import {{packageName}}.{{pluginName}}.mapper.PubNewsTypeMapper;
 import {{packageName}}.{{pluginName}}.service.IPubNewsTypeService;
 import org.jangod.iweb.core.bean.IUser;
@@ -34,9 +33,6 @@ import java.util.List;
 @Transactional
 @Service
 public class PubNewsTypeServiceImpl extends ServiceImplWrapper<PubNewsTypeMapper,PubNewsType> implements IPubNewsTypeService {
-
-    @Autowired
-    private PubNewsManager pubNewsManager;
 
     public PubNewsTypeServiceImpl(PubNewsTypeMapper baseMapper) {
         super(baseMapper);
@@ -101,10 +97,6 @@ public class PubNewsTypeServiceImpl extends ServiceImplWrapper<PubNewsTypeMapper
         // 查询节点是否已使用 有则不可删除
         LambdaQueryWrapper<PubNews> queryWrapper1 = new QueryWrapper<PubNews>().lambda();
         queryWrapper1.eq(PubNews::getType,id);
-        Integer count = pubNewsManager.count(queryWrapper1);
-        if(count != null && count > 0){
-            return ResultUtil.error("当前节点已使用,不可删除");
-        }
         // 软删除
         PubNewsType update = new PubNewsType();
         update.setStatus("0");

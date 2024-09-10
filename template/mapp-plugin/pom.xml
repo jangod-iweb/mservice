@@ -15,21 +15,22 @@
         <module>{{name}}-plugin-{{pluginName}}</module>
     </modules>
 
-    <properties>
-        <csp-plugin-common.version>1.0-SNAPSHOT</csp-plugin-common.version>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-        <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
-    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.jangod.iweb</groupId>
+            <artifactId>jangod-iweb-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jangod.iweb</groupId>
+            <artifactId>jangod-iweb-mapp</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.jangod.iweb</groupId>
                 <artifactId>jangod-iweb-plugin-properties</artifactId>
-                <version>${jangod.iweb.version}</version>
                 <executions>
                     <execution>
                         <phase>prepare-package</phase>
@@ -38,41 +39,17 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>plugin-restart</id>
+                        <id>plugin-install</id>
                         <phase>install</phase>
                         <goals>
-                            <goal>restart</goal>
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>
-                    <prefix>properties</prefix>
-                    <logLevel>debug</logLevel>
                     <autoId>${autoPluginVersion}</autoId>
-                    <server>http://localhost:{{backendPort}}</server>
-                    <account>inspur</account>
-                    <password>!QAZ2wsx2020</password>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifestEntries>
-                            <Plugin-Id>${properties.plugin.id}</Plugin-Id>
-                            <Plugin-Version>${properties.plugin.version}</Plugin-Version>
-                            <Plugin-Provider>${properties.plugin.provider}</Plugin-Provider>
-                            <Plugin-Class>${properties.plugin.class}</Plugin-Class>
-                            <Plugin-Description>${properties.plugin.description}</Plugin-Description>
-                            <Plugin-Timestamp>${properties.buildTime}</Plugin-Timestamp>
-                        </manifestEntries>
-                    </archive>
                 </configuration>
             </plugin>
         </plugins>
-
-        <finalName>${properties.plugin.id}-${properties.plugin.version}</finalName>
     </build>
 </project>

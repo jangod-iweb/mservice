@@ -1,33 +1,19 @@
-
 container:
   auto: false
-  ip:
-  code:
-  token:
-
 plugin:
   # 运行项目时的模式。分为开发环境(dev)、生产环境(prod)
-  runMode: dev
+  runMode: prod
   # 插件的路径。开发环境建议直接配置为插件模块的父级目录。例如: plugins。如果启动主程序时, 插件为加载, 请检查该配置是否正确。
-  pluginPath: ./{{name}}-plugin
+  pluginPath: ./gztask-plugin
   # 插件配置文件
   pluginConfigFilePath: ./pluginFile
 
 spring:
-  # 服务发现
   cloud:
-    nacos:
-      discovery:
-        register-enabled: false
-    # sentinel配置
     sentinel:
-      log:
-        dir: ${args.tmp-path}/sentinel
-  # 数据源配追
+      enabled: false
   datasource:
     dynamic:
-      druid:
-        filters: stat,slf4j
       configClz: org.jangod.iweb.mapp.config.DataSourceConfig
       enabled: true
       primary: master
@@ -36,15 +22,40 @@ spring:
         master:
           driverClassName: org.h2.Driver
           url: jdbc:h2:mem:h2temp
-#        dameng:
-#          driver-class-name: dm.jdbc.driver.DmDriver
-#          url: jdbc:dm://203.175.130.170:5236
-#          username: DV_DB_BSP
-#          password: '!QAZ2wsx2020'
-
 
 app:
-  # 缓存配置
+  simple:
+    enabled: true
+  # 关闭nacos
+  nacos:
+    enabled: false
+  # dubbo
+  dubbo:
+    enabled: ${args.dubbo.enabled:true}
+  # 服务发现
+  discovery:
+    # 通过redis的策略找服务（值为redis，app.nacos.enabled必须配置为false）
+    type: redis
+    fixed:
+      csp-uaa: "127.0.0.1:${server.port}"
+  # 单点登陆配置
+  sso:
+    uaa:
+      enabled: false    #禁止sso单点转发（主要开发环境使用）
+    none:
+      enabled: true
+      appCode: 'gztask'
+      companyIdVal: 'inspur'
+      companyNameVal: ''
+      dashboardFlag: '1'
+      defaultFlag: '1'
+      epdomain: '127.0.0.1'
+      mainTitle: '广州市一体化平台'
+      mainLogo: 'logo.png'
+      loginThemeId: 'cool'
+      parentDeptCode: '广州市'
+
+  # redis配置
   l1ClassName: org.jangod.iweb.plugin.cache.redis.RedisCacheProvider
   redis:
     host: ${args.redis.host}
@@ -55,38 +66,14 @@ app:
     maxTotal: 20
     maxIdle: 10
     maxWaitMillis: 10000
-  # 定时任务
-  job:
-    enabled: true
-  dubbo:
-    enabled: true
-  # 登录策略
-  sso:
-    uaa:
-      enabled: true
-    none:
-      enabled: false
-    bsp:
-      enabled: false
 
-
-# dubbo服务配置
+  # dubbo服务配置
 dubbo:
   protocol:
     port: 20880
   registry:
     address: ${args.dubbo.address}
     protocol: zookeeper
-    group: {{name}}
-    timeout: 50000
   application:
-    name: {{name}}
-    group: bsp
-
-
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 10000
-        readTimeout: 10000
+    name: gztask
+    group: ${args.dubbo.group}

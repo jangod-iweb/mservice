@@ -1,9 +1,9 @@
 
 # 容器配置，具体内容请联系运营人员获取
 container:
-  ip:
-  code:
-  token:
+  ip: ''
+  code: {{name}}
+  token: ''
   auto: true
 
 plugin:
@@ -25,20 +25,16 @@ spring:
         master:
           driverClassName: org.h2.Driver
           url: jdbc:h2:mem:h2temp
-        demo:
-          driverClassName: com.mysql.jdbc.Driver
-          url: 'jdbc:mysql://203.175.139.40:3306/dv_db_demo?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&useSSL=false'
-          username: demo
-          password: '123456a?'
 
 app:
   l1ClassName: org.jangod.iweb.plugin.cache.redis.RedisCacheProvider
   redis:
-    host: {{redisAddr}}
-    port: {{redisPort}}
-    database: {{redisDatabase}}
-    password: '{{redisPassword}}'
+    host: 203.175.130.170
+    port: 6379
+    database: 9
+    password: '!QAZ2wsx2020'
     minIdle: 5
     maxTotal: 20
     maxIdle: 10
     maxWaitMillis: 10000
+

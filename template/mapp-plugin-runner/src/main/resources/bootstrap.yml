@@ -1,57 +1,45 @@
 server:
-  port: {{backendPort}}
+  port: ${app.port}
   servlet:
     context-path:
 
-logging:
-  config: classpath:logback-spring.xml
-
 # 应用相关配置
 app:
-
+  l1ClassName: org.jangod.iweb.plugin.cache.redis.RedisCacheProvider
   # 工作Id，集群模式中指定防止id生成重复
   workId: 1
-  # 应用编码
   code: {{name}}-runner
-  # 应用名称
   title: {{name}}-RUNNER
   # 基于网关的鉴权token
   cloudToken: 791685057029865473
-
-  # nacos
-  nacos:
-    server-addr: ${nacos.url}
-    username: ${nacos.username}
-    password: ${nacos.password}
-    namespace: ${nacos.namespace}
-    # 是否向nacos注册服务
-    regist: ${nacos.serving}
-
 spring:
   application:
     # 应用名称
     name: ${app.code}
-  profiles:
-    active: ${environment}
   cloud:
+    # nacos配置
     nacos:
       discovery:
-        ip: ${app.ip}
-        server-addr: ${app.nacos.server-addr}
-        username:  ${app.nacos.username}
-        password: ${app.nacos.password}
-        namespace: ${app.nacos.namespace}
+        enabled: ${args.nacos.enabled:false}
+        server-addr: ${args.nacos.server-addr}
+        username: ${args.nacos.username}
+        password: ${args.nacos.password}
+        namespace: ${args.nacos.namespace}
         metadata:
           management:
             context-path: '${server.servlet.context-path}/actuator'
+        register-enabled: true
       config:
         # 配置中心地址
-        server-addr:  ${app.nacos.server-addr}
-        username: ${app.nacos.username}
-        password: ${app.nacos.password}
-        namespace: ${app.nacos.namespace}
+        enabled: ${args.nacos.enabled:false}
+        server-addr: ${args.nacos.server-addr}
+        username: ${args.nacos.username}
+        password: ${args.nacos.password}
+        namespace: ${args.nacos.namespace}
         # 配置文件格式
         file-extension: yml
         # 共享配置
         shared-configs:
-        - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+
+

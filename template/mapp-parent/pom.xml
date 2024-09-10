@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.jangod.iweb</groupId>
+        <artifactId>jangod-iweb-parent</artifactId>
+        <version>4.1.7</version>
+        <relativePath/>
+    </parent>
+    <groupId>{{packageName}}</groupId>
+    <artifactId>{{name}}-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <properties>
+        <!-- 私有maven仓库地址-->
+        <iweb.repository>http://mmcs.jangod.org:8081/nexus_iweb</iweb.repository>
+    </properties>
+
+
+    <!-- 从代理仓库中获取maven资源 -->
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+            <id>public</id>
+            <name>Public Repositories</name>
+            <url>http://mmcs.jangod.org:8081/nexus_iweb/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <!-- 自定义依赖包版本号，在此统一管理 -->
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- 框架公共依赖start -->
+            <dependency>
+                <groupId>org.jangod.iweb</groupId>
+                <artifactId>jangod-iweb-extension-xxljob</artifactId>
+                <version>${jangod-iweb.version}</version>
+            </dependency>
+            <!-- 框架公共依赖end -->
+
+            <!--csp基础服务依赖start -->
+            <dependency>
+                <groupId>org.jangod.csp-platform</groupId>
+                <artifactId>csp-common-sso-uaa</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jangod.csp-platform</groupId>
+                <artifactId>csp-api-bsp</artifactId>
+                <version>1.5.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jangod.csp-platform</groupId>
+                <artifactId>csp-api-rc</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <!--csp基础服务依赖end -->
+        </dependencies>
+    </dependencyManagement>
+</project>
